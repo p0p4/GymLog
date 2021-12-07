@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D6D7D7"
+    tools:context=".PlanWeek">
+
+    <!--
+        Title for activity
+    -->
+    <TextView
+        android:id="@+id/movementTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/create_movement"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--
+        Button to end week plan
+    -->
+    <Button
+        android:id="@+id/btnEndWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="#40b7ac"
+        android:text="@string/btn_end_week"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEndDay"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--
+        Button to end day plan
+    -->
+    <Button
+        android:id="@+id/btnEndDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#40b7ac"
+        android:text="@string/btn_end_day"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btnNextMove"
+        app:layout_constraintStart_toEndOf="@+id/btnEndWeek"
+        app:layout_constraintTop_toBottomOf="@+id/durationInputLayout" />
+
+    <!--
+        Button to plan next movement
+    -->
+    <Button
+        android:id="@+id/btnNextMove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#40b7ac"
+        android:text="@string/btn_next_move"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEndDay"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--
+        Layout for name input
+    -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/m_name"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:helperText="required*"
+        app:startIconDrawable="@drawable/name"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movementTitle">
+
+        <!--
+            EditText field for name
+        -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="20" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--
+        Layout for sets input
+    -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/setsInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/m_sets"
+        app:counterEnabled="true"
+        app:counterMaxLength="5"
+        app:helperText="required*"
+        app:startIconDrawable="@drawable/sets"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameInputLayout">
+
+        <!--
+            EditText field for sets
+        -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/setsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="5" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--
+        Layout for reps input
+    -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/repsInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/m_reps"
+        app:counterEnabled="true"
+        app:counterMaxLength="5"
+        app:helperText="required*"
+        app:startIconDrawable="@drawable/reps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setsInputLayout">
+
+        <!--
+            EditText field for reps
+        -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/repsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="5" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--
+        Layout for weight input
+    -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/weightInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/m_weight"
+        app:counterEnabled="true"
+        app:counterMaxLength="5"
+        app:helperText="optional"
+        app:suffixText="kg"
+        app:startIconDrawable="@drawable/dumbbell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repsInputLayout">
+
+        <!--
+            EditText field for weight
+        -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weightInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="5" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--
+        Layout for duration input
+    -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/durationInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/m_duration"
+        app:counterEnabled="true"
+        app:counterMaxLength="9"
+        app:helperText="optional"
+        app:suffixText="sec"
+        app:startIconDrawable="@drawable/duration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weightInputLayout">
+
+        <!--
+            EditText field for duration
+        -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/durationInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="5" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
