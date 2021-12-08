@@ -11,6 +11,11 @@ import android.widget.TextView;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Shows today's workout in a listview
+ * @author niklasmalmgren
+ */
+
 public class StartWorkoutActivity extends AppCompatActivity {
 
     String day = LocalDate.now().getDayOfWeek().name();
@@ -20,8 +25,6 @@ public class StartWorkoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_workout);
-
-        Intent intent = getIntent();
 
         TextView textView = findViewById(R.id.Day);
         textView.setText(day);
