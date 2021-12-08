@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Gymlog</string>
+    <string name="create_movement">Create Movement</string>
+    <string name="btn_end_week">End Week</string>
+    <string name="btn_end_day">End Day</string>
+    <string name="btn_next_move">Next Move</string>
+    <string name="m_name">Name</string>
+    <string name="m_sets">Sets</string>
+    <string name="m_reps">Reps</string>
+    <string name="m_weight">Weight</string>
+    <string name="m_duration">Duration</string>
 </resources>

@@ -1,42 +1,32 @@
 package com.example.project_420;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Week
 {
-    private List<Movement> movements;
-    private static final Week ourInstance = new Week();
+    private String name, description;
+    private ArrayList week;
 
-    public static Week getInstance()
+    public Week(String name, String description)
     {
-        return ourInstance;
-    }
-
-    private Week()
-    {
-        this.movements = new ArrayList<>();
+        this.name = name;
+        this.description = description;
+        week = new ArrayList<Movement>();
     }
 
     public void addMovement(Movement movement)
     {
-        this.movements.add(movement);
+        week.add(movement);
     }
 
-    public List<Movement> movements()
-    {
-        return this.movements;
-    }
-
-    public ArrayList<Movement> getDay(Day day)
+    /*public ArrayList getDay(Day day)
     {
         ArrayList dayList = new ArrayList<Movement>();
 
-        for (Movement m : this.movements)
-        {
+        for (Movement m : this.week){
             if (m.getDay() == day)
                 dayList.add(m);
         }
         return dayList;
-    }
+    }*/
 }
