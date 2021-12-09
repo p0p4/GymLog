@@ -1,17 +1,23 @@
 package com.example.project_420;
 
+/**
+ *
+ * @author Tino Behnen
+ * @version 1.1
+ */
+
 enum Day
 {
-    MON, TUE, WED, THU, FRI, SAT, SUN, NON;
+    MON, TUE, WED, THU, FRI, SAT, SUN, END
 }
 
 public class Movement
 {
     private Day day;
-    private String name, description;
+    private String name;
     private int sets, reps, weight, duration;
 
-    public Movement(Day day, String name, int sets, int reps, int weight, int duration, String description)
+    public Movement(Day day, String name, int sets, int reps, int weight, int duration)
     {
         this.day = day;
         this.name = name;
@@ -19,10 +25,10 @@ public class Movement
         this.reps = reps;
         this.weight = weight;
         this.duration = duration;
-        this.description = description;
     }
 
-    public Day getDay() {
+    public Day getDay()
+    {
         return day;
     }
 
@@ -49,10 +55,5 @@ public class Movement
     public int getDuration()
     {
         return duration;
-    }
-
-    public String getDescription()
-    {
-        return description;
     }
 }

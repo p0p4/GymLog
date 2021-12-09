@@ -22,6 +22,7 @@
             android:id="@+id/imagebutton_plan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="nameWeekButton"
             app:srcCompat="@drawable/imgbutton_plan" />
 
         <ImageButton

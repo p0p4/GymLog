@@ -5,71 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D6D7D7"
-    tools:context=".">
+    tools:context=".PlanWeek">
 
     <!--
         Title for activity
     -->
     <TextView
         android:id="@+id/movementTitle"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="@string/create_movement"
+        android:text="@string/new_movement"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--
+        Title for movement day
+    -->
+    <TextView
+        android:id="@+id/dayTitle"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:textAlignment="textEnd"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/movementTitle" />
 
     <!--
         Button to end week plan
     -->
     <Button
         android:id="@+id/btnEndWeek"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:backgroundTint="#40b7ac"
+        android:clickable="true"
+        android:onClick="endWeek"
         android:text="@string/btn_end_week"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btnEndDay"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <!--
         Button to end day plan
     -->
     <Button
         android:id="@+id/btnEndDay"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="#40b7ac"
+        android:onClick="endDay"
         android:text="@string/btn_end_day"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btnNextMove"
         app:layout_constraintStart_toEndOf="@+id/btnEndWeek"
-        app:layout_constraintTop_toBottomOf="@+id/durationInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/durationInputLayout"
+        tools:ignore="TextContrastCheck" />
 
     <!--
         Button to plan next movement
     -->
     <Button
         android:id="@+id/btnNextMove"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#40b7ac"
+        android:onClick="nextMove"
         android:text="@string/btn_next_move"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btnEndDay"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <!--
         Layout for name input
     -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameInputLayout"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,21 +106,24 @@
         android:hint="@string/m_name"
         app:counterEnabled="true"
         app:counterMaxLength="20"
-        app:helperText="required*"
-        app:startIconDrawable="@drawable/name"
         app:endIconMode="clear_text"
+        app:helperText="required*"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movementTitle">
+        app:layout_constraintTop_toBottomOf="@+id/movementTitle"
+        app:startIconDrawable="@drawable/name">
 
         <!--
             EditText field for name
         -->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameInput"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="20" />
+            android:inputType="text"
+            android:maxLength="20"
+            tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--
@@ -101,6 +131,7 @@
     -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/setsInputLayout"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -111,20 +142,22 @@
         app:counterEnabled="true"
         app:counterMaxLength="5"
         app:helperText="required*"
-        app:startIconDrawable="@drawable/sets"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/nameInputLayout"
+        app:startIconDrawable="@drawable/sets">
 
         <!--
             EditText field for sets
         -->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/setsInput"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="5" />
+            android:maxLength="5"
+            tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--
@@ -132,6 +165,7 @@
     -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/repsInputLayout"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -142,20 +176,22 @@
         app:counterEnabled="true"
         app:counterMaxLength="5"
         app:helperText="required*"
-        app:startIconDrawable="@drawable/reps"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setsInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/setsInputLayout"
+        app:startIconDrawable="@drawable/reps">
 
         <!--
             EditText field for reps
         -->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/repsInput"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="5" />
+            android:maxLength="5"
+            tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--
@@ -163,6 +199,7 @@
     -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/weightInputLayout"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -173,21 +210,23 @@
         app:counterEnabled="true"
         app:counterMaxLength="5"
         app:helperText="optional"
-        app:suffixText="kg"
-        app:startIconDrawable="@drawable/dumbbell"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repsInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/repsInputLayout"
+        app:startIconDrawable="@drawable/dumbbell"
+        app:suffixText="kg">
 
         <!--
             EditText field for weight
         -->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/weightInput"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="5" />
+            android:maxLength="5"
+            tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--
@@ -195,6 +234,7 @@
     -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/durationInputLayout"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -205,21 +245,23 @@
         app:counterEnabled="true"
         app:counterMaxLength="9"
         app:helperText="optional"
-        app:suffixText="sec"
-        app:startIconDrawable="@drawable/duration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weightInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/weightInputLayout"
+        app:startIconDrawable="@drawable/duration"
+        app:suffixText="sec">
 
         <!--
             EditText field for duration
         -->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/durationInput"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="5" />
+            android:maxLength="5"
+            tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

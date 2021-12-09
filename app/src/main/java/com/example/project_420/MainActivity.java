@@ -27,4 +27,9 @@ public class MainActivity extends AppCompatActivity {
         Intent progressIntent = new Intent(this, ProgressionGraphActivity.class);
         startActivity(progressIntent);
     }
+
+    public void nameWeekButton (View view) {
+        Intent nameWeekIntent = new Intent(this, NameWeek.class);
+        startActivity(nameWeekIntent);
+    }
 }
