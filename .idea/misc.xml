@@ -3,11 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_plan_week.xml" value="0.22" />
-        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_start_workout.xml" value="0.16666666666666666" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_progression_graph.xml" value="0.25" />
+        <entry key="..\:/Users/antti/StudioProjects/project_420/app/src/main/res/layout/activity_main.xml" value="0.4010416666666667" />
+        <entry key="..\:/Users/antti/StudioProjects/project_420/app/src/main/res/layout/activity_plan_week.xml" value="0.39895833333333336" />
+        <entry key="..\:/Users/antti/StudioProjects/project_420/app/src/main/res/layout/activity_sleep.xml" value="0.4010416666666667" />
+        <entry key="..\:/Users/antti/StudioProjects/project_420/app/src/main/res/layout/activity_start_workout.xml" value="0.39895833333333336" />
+        <entry key="..\:/Users/antti/StudioProjects/project_420/app/src/main/res/layout/activity_weight.xml" value="0.39895833333333336" />
       </map>
     </option>
   </component>
