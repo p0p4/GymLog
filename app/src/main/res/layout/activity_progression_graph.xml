@@ -8,10 +8,13 @@
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/GraphView"
-        android:layout_width="match_parent"
-        android:layout_height="587dp"
+        android:layout_width="379dp"
+        android:layout_height="586dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="144dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="145dp"
+        android:layout_marginBottom="0dp" />
 
     <RadioGroup
         android:id="@+id/radioGroup"

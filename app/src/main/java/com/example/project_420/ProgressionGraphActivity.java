@@ -12,7 +12,8 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 /**
  * Shows sleep,weight and progression graphs
- * @author niklasmalmgren
+ * @author Niklas Malmgren
+ * version 1.0
  */
 
 public class ProgressionGraphActivity extends AppCompatActivity {
@@ -21,6 +22,9 @@ public class ProgressionGraphActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progression_graph);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.app_logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 
     public void updateUI () {
@@ -44,7 +48,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
 
         graphView.setTitle("Progression");
 
-        graphView.setTitleColor(R.color.purple_200);
+        graphView.setTitleColor(R.color.purple_700);
 
         graphView.setTitleTextSize(30);
 
@@ -68,7 +72,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
 
         graphView.setTitle("Weight");
 
-        graphView.setTitleColor(R.color.purple_200);
+        graphView.setTitleColor(R.color.purple_700);
 
         graphView.setTitleTextSize(30);
 
@@ -93,7 +97,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
 
             graphView.setTitle("Sleep");
 
-            graphView.setTitleColor(R.color.purple_200);
+            graphView.setTitleColor(R.color.purple_700);
 
             graphView.setTitleTextSize(30);
 
