@@ -10,6 +10,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_420">
+
+        <activity
+            android:name=".WeightActivity"
+            android:parentActivityName=".MainActivity" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
+        <activity
+            android:name=".SleepActivity"
+            android:parentActivityName=".MainActivity" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
         <activity
             android:name=".ProgressionGraphActivity"
             android:parentActivityName=".MainActivity" />
@@ -17,6 +34,7 @@
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
+
         <activity
             android:name=".StartWorkoutActivity"
             android:parentActivityName=".MainActivity" />
@@ -24,6 +42,7 @@
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
+
         <activity
             android:name=".NameWeek"
             android:parentActivityName=".MainActivity" />
@@ -31,8 +50,8 @@
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
-        <activity android:name=".PlanWeek" />
 
+        <activity android:name=".PlanWeek" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
