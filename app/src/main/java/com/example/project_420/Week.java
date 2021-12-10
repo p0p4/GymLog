@@ -6,13 +6,14 @@ import java.util.List;
 /**
  *
  * @author Tino Behnen
- * versio 1.3
+ * versio 1.4
  */
 
 public class Week
 {
     private List<Movement> movements;
     private static final Week instance = new Week();
+    private String name;
 
     public static Week getInstance()
     {
@@ -26,7 +27,17 @@ public class Week
 
     public void addMovement(Movement movement)
     {
-        movements.add(movement);
+        this.movements.add(movement);
+    }
+
+    public void clearWeek()
+    {
+        this.movements.clear();
+    }
+
+    public void setWeekName(String name)
+    {
+        this.name = name;
     }
 
     public List<Movement> movements()
@@ -44,5 +55,10 @@ public class Week
                 dayList.add(m);
         }
         return dayList;
+    }
+
+    public String getWeekName()
+    {
+        return this.name;
     }
 }

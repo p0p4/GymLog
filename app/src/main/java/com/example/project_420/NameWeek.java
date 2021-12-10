@@ -10,25 +10,27 @@ import android.widget.EditText;
 /**
  *
  * @author Tino Behnen
- * @version 1.0
+ * @version 1.1
  */
 
 public class NameWeek extends AppCompatActivity
 {
-    public String weekPlanName;
+    private Week week;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_week);
+
+        week = Week.getInstance();
     }
 
     public void planWeekButton (View view)
     {
-        weekPlanName = ((EditText)findViewById(R.id.nameWeekInput)).getText().toString();
+        week.setWeekName(((EditText)findViewById(R.id.nameWeekInput)).getText().toString());
 
-        if (!weekPlanName.equals(""))
+        if (!week.getWeekName().equals(""))
         {
             Intent planWeekIntent = new Intent(this, PlanWeek.class);
             startActivity(planWeekIntent);
