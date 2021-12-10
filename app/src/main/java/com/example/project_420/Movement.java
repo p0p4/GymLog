@@ -3,7 +3,7 @@ package com.example.project_420;
 /**
  *
  * @author Tino Behnen
- * @version 1.1
+ * @version 1.2
  */
 
 enum Day
@@ -55,5 +55,10 @@ public class Movement
     public int getDuration()
     {
         return duration;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + ":\nReps: " + this.reps + ", Sets: " + this.sets + ", Weight: " + this.weight + "kg, Duration: " + this.duration + "s";
     }
 }
