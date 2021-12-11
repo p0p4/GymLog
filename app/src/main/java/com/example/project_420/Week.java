@@ -12,17 +12,13 @@ import java.util.ArrayList;
 /**
  *
  * @author Tino Behnen
- * @version 1.6
+ * @version 1.5
  */
 public class Week
 {
     private ArrayList<Movement> movements;
     private static Week instance;
 
-    /**
-     *
-     * @return
-     */
     public static Week getInstance()
     {
         if(instance == null)
@@ -32,38 +28,22 @@ public class Week
         return instance;
     }
 
-    /**
-     *
-     * @param movement
-     */
     public void addMovement(Movement movement)
     {
         this.movements.add(movement);
     }
 
-    /**
-     *
-     */
     public void clear()
     {
         if (this.movements != null)
         this.movements.clear();
     }
 
-    /**
-     *
-     * @return
-     */
     public ArrayList<Movement> movements()
     {
         return this.movements;
     }
 
-    /**
-     *
-     * @param day
-     * @return
-     */
     public ArrayList<Movement> getDay(Day day)
     {
         ArrayList<Movement> dayList = new ArrayList<>();
@@ -76,10 +56,6 @@ public class Week
         return dayList;
     }
 
-    /**
-     *
-     * @param context
-     */
     public void save(Context context)
     {
         SharedPreferences sharedPrefs = context.getSharedPreferences("Week Data", Context.MODE_PRIVATE);
@@ -90,10 +66,6 @@ public class Week
         editor.apply();
     }
 
-    /**
-     *
-     * @param context
-     */
     public void load(Context context)
     {
         SharedPreferences sharedPrefs = context.getSharedPreferences("Week Data", Context.MODE_PRIVATE);

@@ -21,10 +21,6 @@ public class NameWeek extends AppCompatActivity
 {
     private static final String TAG = "NameWeek";
 
-    /**
-     *
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,10 +34,6 @@ public class NameWeek extends AppCompatActivity
         getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 
-    /**
-     *
-     * @param view
-     */
     public void planWeekButton (View view)
     {
         String name = ((EditText)findViewById(R.id.nameWeekInput)).getText().toString();

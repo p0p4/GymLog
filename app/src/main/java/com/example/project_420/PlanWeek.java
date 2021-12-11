@@ -26,10 +26,6 @@ public class PlanWeek extends AppCompatActivity
     private int movementCount = 1;
     private EditText nameEdit, setsEdit, repsEdit, weightEdit, durationEdit;
 
-    /**
-     *
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -56,20 +52,12 @@ public class PlanWeek extends AppCompatActivity
         refreshTitle();
     }
 
-    /**
-     *
-     * @param view
-     */
     public void endWeek(View view)
     {
         newMovement();
         backToMain();
     }
 
-    /**
-     *
-     * @param view
-     */
     public void endDay(View view)
     {
         newMovement();
@@ -86,10 +74,6 @@ public class PlanWeek extends AppCompatActivity
         }
     }
 
-    /**
-     *
-     * @param view
-     */
     public void nextMove(View view)
     {
         if (isEmpty(nameEdit) || isEmpty(setsEdit) || isEmpty(repsEdit))
@@ -99,9 +83,6 @@ public class PlanWeek extends AppCompatActivity
         newMovement();
     }
 
-    /**
-     *
-     */
     private void newMovement()
     {
         if (isEmpty(nameEdit) || isEmpty(setsEdit) || isEmpty(repsEdit))
@@ -131,9 +112,6 @@ public class PlanWeek extends AppCompatActivity
         resetInputs();
     }
 
-    /**
-     *
-     */
     @SuppressLint("SetTextI18n")
     private void refreshTitle()
     {
@@ -141,9 +119,6 @@ public class PlanWeek extends AppCompatActivity
                 .setText(movementCount + "/" + dayLong());
     }
 
-    /**
-     *
-     */
     private void resetInputs()
     {
         nameEdit.getText().clear();
@@ -153,29 +128,17 @@ public class PlanWeek extends AppCompatActivity
         durationEdit.getText().clear();
     }
 
-    /**
-     *
-     * @param editText
-     * @return
-     */
     private boolean isEmpty(EditText editText)
     {
         return editText.getText().toString().trim().length() <= 0;
     }
 
-    /**
-     *
-     */
     private void backToMain()
     {
         Intent main = new Intent(this, MainActivity.class);
         startActivity(main);
     }
 
-    /**
-     *
-     * @return
-     */
     private String dayLong()
     {
         String dayName = "Monday";
@@ -203,9 +166,6 @@ public class PlanWeek extends AppCompatActivity
         return dayName;
     }
 
-    /**
-     *
-     */
     @Override
     protected void onPause() {
         super.onPause();
