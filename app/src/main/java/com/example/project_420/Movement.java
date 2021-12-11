@@ -8,7 +8,7 @@ package com.example.project_420;
 
 enum Day
 {
-    MON, TUE, WED, THU, FRI, SAT, SUN, END
+    MON, TUE, WED, THU, FRI, SAT, SUN
 }
 
 public class Movement
@@ -59,6 +59,6 @@ public class Movement
 
     @Override
     public String toString() {
-        return this.name + ":\nReps: " + this.reps + ", Sets: " + this.sets + ", Weight: " + this.weight + "kg, Duration: " + this.duration + "s";
+        return this.name + "\nSets: " + this.sets + ", Reps: " + this.sets + ", Weight: " + this.weight + "kg, Duration: " + this.duration + "s";
     }
 }

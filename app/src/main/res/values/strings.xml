@@ -7,6 +7,7 @@
     <string name="week_plan_title">Create Week Plan</string>
     <string name="w_name">Plan Name</string>
     <string name="w_continue">Continue</string>
+    <string name="w_warning">Continuing will delete your previous plan*</string>
     <string name="m_name">Name</string>
     <string name="m_sets">Sets</string>
     <string name="m_reps">Reps</string>

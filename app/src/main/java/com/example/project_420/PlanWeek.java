@@ -5,15 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  *
  * @author Tino Behnen
- * @version 1.0
+ * @version 1.1
  */
 
 public class PlanWeek extends AppCompatActivity
@@ -31,6 +31,9 @@ public class PlanWeek extends AppCompatActivity
         setContentView(R.layout.activity_plan_week);
 
         week = Week.getInstance();
+        week.clear();
+        week.save(this);
+        week.load(this);
 
         nameEdit = findViewById(R.id.nameInput);
         setsEdit = findViewById(R.id.setsInput);
@@ -65,6 +68,10 @@ public class PlanWeek extends AppCompatActivity
 
     public void nextMove(View view)
     {
+        if (isEmpty(nameEdit) || isEmpty(setsEdit) || isEmpty(repsEdit))
+        {
+            Toast.makeText(this, "Fill in required* fields!", Toast.LENGTH_LONG).show();
+        }
         newMovement();
     }
 
@@ -150,5 +157,12 @@ public class PlanWeek extends AppCompatActivity
                 break;
         }
         return dayName;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        week.save(this);
     }
 }

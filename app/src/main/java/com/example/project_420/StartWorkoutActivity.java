@@ -34,6 +34,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
         textView.setText(weekday);
 
         week = Week.getInstance();
+        week.load(this);
 
         listView = (ListView) findViewById(R.id.listview);
 

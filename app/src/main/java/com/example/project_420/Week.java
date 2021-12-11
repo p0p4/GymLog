@@ -1,28 +1,32 @@
 package com.example.project_420;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Tino Behnen
- * versio 1.4
+ * @version 1.5
  */
 
 public class Week
 {
-    private List<Movement> movements;
-    private static final Week instance = new Week();
-    private String name;
+    private ArrayList<Movement> movements;
+    private static Week instance;
 
     public static Week getInstance()
     {
+        if(instance == null)
+        {
+            instance = new Week();
+        }
         return instance;
-    }
-
-    private Week()
-    {
-        this.movements = new ArrayList<>();
     }
 
     public void addMovement(Movement movement)
@@ -30,24 +34,20 @@ public class Week
         this.movements.add(movement);
     }
 
-    public void clearWeek()
+    public void clear()
     {
+        if (this.movements != null)
         this.movements.clear();
     }
 
-    public void setWeekName(String name)
-    {
-        this.name = name;
-    }
-
-    public List<Movement> movements()
+    public ArrayList<Movement> movements()
     {
         return this.movements;
     }
 
     public ArrayList<Movement> getDay(Day day)
     {
-        ArrayList dayList = new ArrayList<Movement>();
+        ArrayList<Movement> dayList = new ArrayList<>();
 
         for (Movement m : this.movements)
         {
@@ -57,8 +57,27 @@ public class Week
         return dayList;
     }
 
-    public String getWeekName()
+    public void save(Context context)
     {
-        return this.name;
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Week Data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(this.movements);
+        editor.putString("movements", json);
+        editor.apply();
+    }
+
+    public void load(Context context)
+    {
+        SharedPreferences sharedPrefs = context.getSharedPreferences("Week Data", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPrefs.getString("movements", null);
+        Type type = new TypeToken<ArrayList<Movement>>() {}.getType();
+        this.movements = gson.fromJson(json, type);
+
+        if (this.movements == null)
+        {
+            this.movements = new ArrayList<>();
+        }
     }
 }
