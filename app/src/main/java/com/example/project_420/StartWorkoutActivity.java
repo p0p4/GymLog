@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -87,10 +89,12 @@ public class StartWorkoutActivity extends AppCompatActivity {
 
         if (arrayList.size()==0) {
             arrayList.add("Today is a rest day!");
+            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
+            listView.setAdapter(arrayAdapter);
+        } else {
+            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, arrayList);
+            listView.setAdapter(arrayAdapter);
         }
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
-
-        listView.setAdapter(arrayAdapter);
 
         gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
         workoutScore = gymlogPrefs.getInt("workoutScore",0);
@@ -102,41 +106,15 @@ public class StartWorkoutActivity extends AppCompatActivity {
         }
     }
 
-    public void successButton (View view) {
-        workoutScore++;
-        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
-        gymlogPrefsEditor.putInt("workoutScore",workoutScore);
-        gymlogPrefsEditor.apply();
-
-        workoutList.add(workoutScore);
-        SharedPreferences workoutPrefs = getSharedPreferences("workoutPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = workoutPrefs.edit();
-        for (i = 0; i < workoutList.size(); i++) {
-            editor.putInt(Integer.toString(i), workoutList.get(i));
+    public void doneButton (View view) {
+        for (i = 0; i < listView.getCount();i++) {
+            if(listView.isItemChecked(i)) {
+                workoutScore++;
+            } else if (!(listView.isItemChecked(i))) {
+                workoutScore--;
+            }
         }
-        editor.putInt("size", workoutList.size());
-        editor.apply();
 
-        Intent main = new Intent(this, MainActivity.class);
-        startActivity(main);
-    }
-
-    public void partButton (View view) {
-        workoutList.add(workoutScore);
-        SharedPreferences workoutPrefs = getSharedPreferences("workoutPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = workoutPrefs.edit();
-        for (i = 0; i < workoutList.size(); i++) {
-            editor.putInt(Integer.toString(i), workoutList.get(i));
-        }
-        editor.putInt("size", workoutList.size());
-        editor.apply();
-
-        Intent main = new Intent(this, MainActivity.class);
-        startActivity(main);
-    }
-
-    public void failButton (View view) {
-        workoutScore--;
         SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
         gymlogPrefsEditor.putInt("workoutScore",workoutScore);
         gymlogPrefsEditor.apply();
