@@ -1,9 +1,13 @@
 package com.example.project_420;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +22,68 @@ public class WeightActivity extends AppCompatActivity {
 
     private float weight, previousWeight;
     private int weightPoints;
+    private boolean weightLoss;
+
+    public static final String weightPref = "weightPref";
+    public static final String weightPointsPref = "weightPointsPref";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_weight);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.app_logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
+        previousWeight = gymlogPrefs.getFloat(weightPref, 0);
+        weightPoints = gymlogPrefs.getInt(weightPointsPref, 0);
+
+        TextView tvPreviousWeight = (TextView) findViewById(R.id.tvPreviousWeight);
+        tvPreviousWeight.setText("Your previous weight was: " + (Float.toString(previousWeight)) + " kg.");
+
+        Switch toggleLossGain = findViewById(R.id.toggleLossGain);
+
+        toggleLossGain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    weightLoss = true;
+                } else {
+                    weightLoss = false;
+                }
+            }
+        });
+    }
+
+    public void saveWeight(View view) {
+        EditText weightInput = (EditText) findViewById(R.id.weightInput);
+        weight =  Float.parseFloat(weightInput.getText().toString());
+
+        //jos paino on vähemmän kuin viimeksi, pisteet erotuksesta jne.
+        if ((weight < previousWeight) && (weightLoss = true)) { //painan vähemmän kuin ennen ja haluan pudottaa painoa
+            weightPoints += (int) (previousWeight - weight);
+            previousWeight = weight;
+        } else if ((weight < previousWeight) && (weightLoss = false)) { // painan vähemmän kuin ennen mutta en halua pudottaa painoa
+            weightPoints -= (int) (previousWeight - weight);
+            previousWeight = weight;
+        } else if ((weight > previousWeight) && (weightLoss = true)) { // painan enemmän kuin ennen mutta haluan pudottaa painoa
+            weightPoints -= (int) (weight - previousWeight);
+            previousWeight = weight;
+        } else if ((weight > previousWeight) && (weightLoss = false)) { // painan enemmän kuin ennen mutta en halua pudottaa painoa
+            weightPoints += (int) (weight - previousWeight);
+            previousWeight = weight;
+        }
+
+        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
+        gymlogPrefsEditor.putFloat(weightPref, previousWeight);
+        gymlogPrefsEditor.putInt(weightPointsPref, weightPoints);
+        gymlogPrefsEditor.apply();
+
+        Intent main = new Intent(this, MainActivity.class);
+        startActivity(main);
+    }
 
     public float getPreviousWeight() {
         return previousWeight;
@@ -41,32 +107,5 @@ public class WeightActivity extends AppCompatActivity {
 
     public void setWeightPoints(int weightPoints) {
         this.weightPoints = weightPoints;
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weight);
-
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.app_logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-
-        TextView tvPreviousWeight = (TextView) findViewById(R.id.tvPreviousWeight);
-        tvPreviousWeight.setText("Your previous weight was: " + (Float.toString(previousWeight)) + " kg.");
-    }
-
-    public void saveWeight(View view) {
-        EditText weightInput = (EditText) findViewById(R.id.weightInput);
-        weight =  Integer.parseInt(weightInput.getText().toString());
-        if (weight < previousWeight) {
-            weightPoints += previousWeight - weight;
-            previousWeight = weight;
-        } else {
-            weightPoints -= weight - previousWeight;
-            previousWeight = weight;
-        }
-        Intent main = new Intent(this, MainActivity.class);
-        startActivity(main);
     }
 }

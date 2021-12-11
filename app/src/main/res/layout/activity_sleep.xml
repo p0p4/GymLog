@@ -4,39 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d6d7d7"
     tools:context=".SleepActivity">
 
     <Button
         android:id="@+id/btn_SaveSLeep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:onClick="saveSleep"
         android:text="Save"
         app:layout_constraintBaseline_toBaselineOf="@+id/sleepInput"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sleepInput" />
 
     <EditText
         android:id="@+id/sleepInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="69dp"
         android:ems="10"
         android:hint="Hours slept last night"
         android:inputType="textPersonName"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/tvSleepTarget"
+        app:layout_constraintEnd_toStartOf="@+id/btn_SaveSLeep"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tvPreviousSleep"
+        android:id="@+id/tvSleepTarget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="57dp"
+        android:layout_marginBottom="10dp"
         android:text="TextView"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sleepInput" />
+        app:layout_constraintBottom_toTopOf="@+id/btnIncrementTarget"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSleepPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="64dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/sleepInput"
+        app:layout_constraintEnd_toEndOf="@+id/sleepInput" />
+
+    <Button
+        android:id="@+id/btnDecreaseTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="187dp"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnIncrementTarget"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnIncrementTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnDecreaseTarget"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDecreaseTarget" />
 </androidx.constraintlayout.widget.ConstraintLayout>

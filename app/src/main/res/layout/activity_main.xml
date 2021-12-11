@@ -16,7 +16,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPointsTotal">
+        app:layout_constraintTop_toBottomOf="@+id/tvFitnessIndex">
 
         <ImageButton
             android:id="@+id/imagebutton_plan"
@@ -43,12 +43,14 @@
             android:id="@+id/imagebutton_sleep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="sleepButton"
             app:srcCompat="@drawable/imgbutton_sleep" />
 
         <ImageButton
             android:id="@+id/imagebutton_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="weightButton"
             app:srcCompat="@drawable/imgbutton_weight" />
     </LinearLayout>
 
@@ -59,35 +61,22 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvTodayInfo"
+        android:layout_marginBottom="87dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutProgram"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvTodayInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="30dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="Today is a rest/training day"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayoutProgram"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
     <LinearLayout
         android:id="@+id/linearLayoutProgram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="55dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/tvPointsToday"
+        app:layout_constraintBottom_toTopOf="@+id/tvFitnessIndex"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTodayInfo">
+        app:layout_constraintTop_toBottomOf="@+id/calendarView">
 
         <TextView
             android:id="@+id/tvProgramString"
@@ -105,27 +94,15 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvPointsToday"
+        android:id="@+id/tvFitnessIndex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="30dp"
-        android:text="Points earned today:"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvPointsTotal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutProgram" />
-
-    <TextView
-        android:id="@+id/tvPointsTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginBottom="69dp"
         android:text="Total points earned:"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutInterface"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPointsToday" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutProgram" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
