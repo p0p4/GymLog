@@ -59,6 +59,14 @@ public class Movement
 
     @Override
     public String toString() {
-        return this.name + "\nSets: " + this.sets + ", Reps: " + this.sets + ", Weight: " + this.weight + "kg, Duration: " + this.duration + "s";
+        if (getWeight() == 0 && getDuration() == 0) {
+            return this.name + "\nSets: " + this.sets + ", Reps: " + this.reps;
+        } else if (getDuration() == 0) {
+            return this.name + "\nSets: " + this.sets + ", Reps: " + this.reps + ", Weight: " + this.weight + "kg";
+        } else if (getWeight() == 0){
+            return this.name + "\nSets: " + this.sets + ", Reps: " + this.reps + ", Duration: " + this.duration + "s";
+        } else {
+            return this.name + "\nSets: " + this.sets + ", Reps: " + this.reps + ", Weight: " + this.weight + "kg, Duration: " + this.duration + "s";
+        }
     }
 }
