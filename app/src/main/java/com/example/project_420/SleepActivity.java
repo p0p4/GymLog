@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 /**
  * @author matiasnäppä
- * versio 1.0
+ * versio 1.2
  */
 
 public class SleepActivity extends AppCompatActivity {

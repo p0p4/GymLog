@@ -91,6 +91,7 @@
             android:id="@+id/deleteProgram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="clearProgram"
             app:srcCompat="@android:drawable/ic_menu_delete" />
     </LinearLayout>
 

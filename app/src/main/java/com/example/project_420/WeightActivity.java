@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  *
  * @author matiasnäppä
- * versio 1.0
+ * versio 1.2
  */
 
 public class WeightActivity extends AppCompatActivity {
@@ -53,6 +53,11 @@ public class WeightActivity extends AppCompatActivity {
 
         TextView tvPreviousWeight = (TextView) findViewById(R.id.tvPreviousWeight);
         tvPreviousWeight.setText("Your previous weight was: " + (Float.toString(previousWeight)) + " kg.");
+    }
+
+    public void saveWeight(View view) {
+        EditText weightInput = (EditText) findViewById(R.id.weightInput);
+        weight =  Float.parseFloat(weightInput.getText().toString());
 
         Switch toggleLossGain = findViewById(R.id.toggleLossGain);
 
@@ -65,14 +70,12 @@ public class WeightActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void saveWeight(View view) {
-        EditText weightInput = (EditText) findViewById(R.id.weightInput);
-        weight =  Float.parseFloat(weightInput.getText().toString());
 
         //jos paino on vähemmän kuin viimeksi, pisteet erotuksesta jne.
-        if ((weight < previousWeight) && (weightLoss = true)) { //painan vähemmän kuin ennen ja haluan pudottaa painoa
+        if (previousWeight == 0) {
+            weightPoints = 0; //Ekalta kerralta ei pisteitä
+            previousWeight = weight;
+        } else if ((weight < previousWeight) && (weightLoss = true)) { //painan vähemmän kuin ennen ja haluan pudottaa painoa
             weightPoints += (int) (previousWeight - weight);
             previousWeight = weight;
         } else if ((weight < previousWeight) && (weightLoss = false)) { // painan vähemmän kuin ennen mutta en halua pudottaa painoa
