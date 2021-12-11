@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tvFitnessIndex = findViewById(R.id.tvFitnessIndex);
 
         SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
-        fitnessIndex += ((gymlogPrefs.getInt("weightPointsPref", 0)) + ((gymlogPrefs.getInt("sleepPointsPref", 0))));
+        fitnessIndex += ((gymlogPrefs.getInt("weightPointsPref", 0)) + ((gymlogPrefs.getInt("sleepPointsPref", 0))) + ((gymlogPrefs.getInt("workoutScore", 0))));
         tvFitnessIndex.setText("Performance under current plan: " + fitnessIndex);
     }
 

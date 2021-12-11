@@ -25,12 +25,12 @@ public class WeightActivity extends AppCompatActivity {
     private float weight, previousWeight;
     private int weightPoints;
     private boolean weightLoss;
-    int i,weightindex;
+    int i, weightIndex;
 
     public static final String weightPref = "weightPref";
     public static final String weightPointsPref = "weightPointsPref";
 
-    ArrayList<Float> weightlist = new ArrayList<>();
+    ArrayList<Float> weightList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +46,9 @@ public class WeightActivity extends AppCompatActivity {
         weightPoints = gymlogPrefs.getInt(weightPointsPref, 0);
 
         SharedPreferences weightPrefs = getSharedPreferences("weightPrefs", Context.MODE_PRIVATE);
-        weightindex = weightPrefs.getInt("size",0);
-        for(i = 0;i < weightindex;i++) {
-            weightlist.add(weightPrefs.getFloat(Integer.toString(i), 0));
+        weightIndex = weightPrefs.getInt("size",0);
+        for(i = 0; i < weightIndex; i++) {
+            weightList.add(weightPrefs.getFloat(Integer.toString(i), 0));
         }
 
         TextView tvPreviousWeight = (TextView) findViewById(R.id.tvPreviousWeight);
@@ -86,13 +86,13 @@ public class WeightActivity extends AppCompatActivity {
             previousWeight = weight;
         }
 
-        weightlist.add(weight);
+        weightList.add(weight);
         SharedPreferences weightPrefs = getSharedPreferences("weightPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = weightPrefs.edit();
-        for (i = 0;i < weightlist.size();i++) {
-            editor.putFloat(Integer.toString(i), weightlist.get(i));
+        for (i = 0; i < weightList.size(); i++) {
+            editor.putFloat(Integer.toString(i), weightList.get(i));
         }
-        editor.putInt("size",weightlist.size());
+        editor.putInt("size", weightList.size());
         editor.apply();
 
         SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);

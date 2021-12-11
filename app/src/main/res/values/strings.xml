@@ -15,5 +15,8 @@
     <string name="m_duration">Duration</string>
     <string name="weight">Weight</string>
     <string name="sleep">Sleep</string>
-    <string name="performance">Performance</string>
+    <string name="performance">Workout score</string>
+    <string name="successButton">Workout done</string>
+    <string name="failButton">Workout failed</string>
+    <string name="partButton">Workout partly done</string>
 </resources>

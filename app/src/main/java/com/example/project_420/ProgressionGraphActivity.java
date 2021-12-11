@@ -20,8 +20,8 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class ProgressionGraphActivity extends AppCompatActivity {
 
-    private SharedPreferences weightPrefs,sleepPrefs;
-    int i,weightindex,sleepindex;
+    private SharedPreferences weightPrefs, sleepPrefs, workoutPrefs;
+    int i, weightIndex, sleepIndex, workoutIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +39,19 @@ public class ProgressionGraphActivity extends AppCompatActivity {
         if(rg.getCheckedRadioButtonId()==R.id.performanceButton) {
             graphView.removeAllSeries();
 
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
-                new DataPoint(0, 1.5),
-                new DataPoint(1, 3),
-                new DataPoint(2, -5),
-                new DataPoint(3, 9),
-                new DataPoint(4, -7),
-                new DataPoint(5, 3),
-                new DataPoint(6, 6),
-                new DataPoint(7, 16),
-                new DataPoint(8, 129),
-                new DataPoint(9, 123),
-        });
+            workoutPrefs = getSharedPreferences("workoutPrefs", Context.MODE_PRIVATE);
+            workoutIndex = workoutPrefs.getInt("size",0);
 
-        graphView.setTitle("Performance");
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+
+            graphView.getViewport().setXAxisBoundsManual(true);
+            graphView.getViewport().setMaxX(workoutIndex);
+
+            for (i = 0; i < workoutIndex; i++) {
+                series.appendData(new DataPoint(i,workoutPrefs.getInt(Integer.toString(i),0)),true,9999);
+            }
+
+        graphView.setTitle("Workout score");
         graphView.setTitleColor(R.color.purple_700);
         graphView.setTitleTextSize(30);
         graphView.addSeries(series);
@@ -62,14 +61,14 @@ public class ProgressionGraphActivity extends AppCompatActivity {
             graphView.removeAllSeries();
 
             weightPrefs = getSharedPreferences("weightPrefs", Context.MODE_PRIVATE);
-            weightindex = weightPrefs.getInt("size",0);
+            weightIndex = weightPrefs.getInt("size",0);
 
             LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
 
             graphView.getViewport().setXAxisBoundsManual(true);
-            graphView.getViewport().setMaxX(weightindex);
+            graphView.getViewport().setMaxX(weightIndex);
 
-            for (i = 0; i < weightindex;i++) {
+            for (i = 0; i < weightIndex; i++) {
                 series.appendData(new DataPoint(i,weightPrefs.getFloat(Integer.toString(i),0)),true,9999);
             }
 
@@ -83,14 +82,14 @@ public class ProgressionGraphActivity extends AppCompatActivity {
             graphView.removeAllSeries();
 
             sleepPrefs = getSharedPreferences("sleepPrefs", Context.MODE_PRIVATE);
-            sleepindex = sleepPrefs.getInt("size",0);
+            sleepIndex = sleepPrefs.getInt("size",0);
 
             LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
 
             graphView.getViewport().setXAxisBoundsManual(true);
-            graphView.getViewport().setMaxX(sleepindex);
+            graphView.getViewport().setMaxX(sleepIndex);
 
-            for (i = 0; i < sleepindex;i++) {
+            for (i = 0; i < sleepIndex; i++) {
                 series.appendData(new DataPoint(i,sleepPrefs.getFloat(Integer.toString(i),0)),true,9999);
             }
 

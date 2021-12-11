@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class SleepActivity extends AppCompatActivity {
 
     private float sleep, sleepTarget;
-    private int sleepPoints,i,sleepindex;
+    private int sleepPoints,i, sleepIndex;
 
 
     private Button btnIncrementTarget;
@@ -34,7 +34,7 @@ public class SleepActivity extends AppCompatActivity {
     public static final String sleepPointsPref = "sleepPointsPref";
     public static final String sleepTargetPref = "sleepTargetPref";
 
-    ArrayList<Float> sleeplist = new ArrayList<>();
+    ArrayList<Float> sleepList = new ArrayList<>();
 
     private final View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
@@ -69,9 +69,9 @@ public class SleepActivity extends AppCompatActivity {
         TextView tvSleepPoints = findViewById(R.id.tvSleepPoints);
 
         SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs", Context.MODE_PRIVATE);
-        sleepindex = sleepPrefs.getInt("size",0);
-        for(i = 0;i < sleepindex;i++) {
-            sleeplist.add(sleepPrefs.getFloat(Integer.toString(i), 0));
+        sleepIndex = sleepPrefs.getInt("size",0);
+        for(i = 0; i < sleepIndex; i++) {
+            sleepList.add(sleepPrefs.getFloat(Integer.toString(i), 0));
         }
 
         SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
@@ -93,13 +93,13 @@ public class SleepActivity extends AppCompatActivity {
             sleepPoints -= sleepTarget - sleep;
         }
 
-        sleeplist.add(sleep);
+        sleepList.add(sleep);
         SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sleepPrefs.edit();
-        for (i = 0;i < sleeplist.size();i++) {
-            editor.putFloat(Integer.toString(i), sleeplist.get(i));
+        for (i = 0; i < sleepList.size(); i++) {
+            editor.putFloat(Integer.toString(i), sleepList.get(i));
         }
-        editor.putInt("size",sleeplist.size());
+        editor.putInt("size", sleepList.size());
         editor.apply();
 
         SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
