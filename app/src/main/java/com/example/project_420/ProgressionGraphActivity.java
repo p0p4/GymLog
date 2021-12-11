@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -22,6 +23,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
 
     private SharedPreferences weightPrefs, sleepPrefs, workoutPrefs;
     int i, weightIndex, sleepIndex, workoutIndex;
+    float sleepTarget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
             sleepIndex = sleepPrefs.getInt("size",0);
 
             LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+            LineGraphSeries<DataPoint> sleepGoal = new LineGraphSeries<>();
 
             graphView.getViewport().setXAxisBoundsManual(true);
             graphView.getViewport().setMaxX(sleepIndex);
@@ -93,10 +96,20 @@ public class ProgressionGraphActivity extends AppCompatActivity {
                 series.appendData(new DataPoint(i,sleepPrefs.getFloat(Integer.toString(i),0)),true,9999);
             }
 
+            SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
+            sleepTarget = gymlogPrefs.getFloat("sleepTargetPref", 8);
+            int sleepTargetIndex =+ sleepIndex + 1;
+
+            for (i = 0; i < sleepTargetIndex; i++) {
+                sleepGoal.appendData(new DataPoint(i,sleepTarget),true,9999);       //sleep goal reference linegraph
+            }
+
+            sleepGoal.setColor(Color.GREEN);
             graphView.setTitle("Sleep");
             graphView.setTitleColor(R.color.purple_700);
             graphView.setTitleTextSize(30);
             graphView.addSeries(series);
+            graphView.addSeries(sleepGoal);
 
         }
 }
