@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D6D7D7"
-    tools:context=".MainActivity">
+    tools:context=".ProgressionGraphActivity">
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/GraphView"
@@ -27,25 +27,25 @@
         android:layout_marginTop="0dp">
 
         <RadioButton
-            android:id="@+id/progressionButton"
+            android:id="@+id/performanceButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="buttonPressed"
-            android:text="Progression" />
+            android:text="@string/performance" />
 
         <RadioButton
             android:id="@+id/sleepButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="buttonPressed"
-            android:text="Sleep" />
+            android:text="@string/sleep"/>
 
         <RadioButton
             android:id="@+id/weightButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:onClick="buttonPressed"
-            android:text="Weight" />
+            android:text="@string/weight" />
 
     </RadioGroup>
 

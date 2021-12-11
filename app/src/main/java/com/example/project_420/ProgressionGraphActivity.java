@@ -36,7 +36,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
         final RadioGroup rg = findViewById(R.id.radioGroup);
         GraphView graphView = findViewById(R.id.GraphView);
 
-        if(rg.getCheckedRadioButtonId()==R.id.progressionButton) {
+        if(rg.getCheckedRadioButtonId()==R.id.performanceButton) {
             graphView.removeAllSeries();
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
@@ -52,7 +52,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
                 new DataPoint(9, 123),
         });
 
-        graphView.setTitle("Progression");
+        graphView.setTitle("Performance");
         graphView.setTitleColor(R.color.purple_700);
         graphView.setTitleTextSize(30);
         graphView.addSeries(series);
