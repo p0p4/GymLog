@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author matiasnäppä
@@ -23,9 +25,12 @@ public class WeightActivity extends AppCompatActivity {
     private float weight, previousWeight;
     private int weightPoints;
     private boolean weightLoss;
+    int i,weightindex;
 
     public static final String weightPref = "weightPref";
     public static final String weightPointsPref = "weightPointsPref";
+
+    ArrayList<Float> weightlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,12 @@ public class WeightActivity extends AppCompatActivity {
         SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
         previousWeight = gymlogPrefs.getFloat(weightPref, 0);
         weightPoints = gymlogPrefs.getInt(weightPointsPref, 0);
+
+        SharedPreferences weightPrefs = getSharedPreferences("weightPrefs", Context.MODE_PRIVATE);
+        weightindex = weightPrefs.getInt("size",0);
+        for(i = 0;i < weightindex;i++) {
+            weightlist.add(weightPrefs.getFloat(Integer.toString(i), 0));
+        }
 
         TextView tvPreviousWeight = (TextView) findViewById(R.id.tvPreviousWeight);
         tvPreviousWeight.setText("Your previous weight was: " + (Float.toString(previousWeight)) + " kg.");
@@ -74,6 +85,15 @@ public class WeightActivity extends AppCompatActivity {
             weightPoints += (int) (weight - previousWeight);
             previousWeight = weight;
         }
+
+        weightlist.add(weight);
+        SharedPreferences weightPrefs = getSharedPreferences("weightPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = weightPrefs.edit();
+        for (i = 0;i < weightlist.size();i++) {
+            editor.putFloat(Integer.toString(i), weightlist.get(i));
+        }
+        editor.putInt("size",weightlist.size());
+        editor.apply();
 
         SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
