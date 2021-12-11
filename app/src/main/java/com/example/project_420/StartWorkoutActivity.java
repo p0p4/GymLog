@@ -85,6 +85,9 @@ public class StartWorkoutActivity extends AppCompatActivity {
             }
         }
 
+        if (arrayList.size()==0) {
+            arrayList.add("Today is a rest day!");
+        }
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
 
         listView.setAdapter(arrayAdapter);
