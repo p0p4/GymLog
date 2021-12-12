@@ -53,11 +53,6 @@ public class WeightActivity extends AppCompatActivity {
 
         TextView tvPreviousWeight = (TextView) findViewById(R.id.tvPreviousWeight);
         tvPreviousWeight.setText("Your previous weight was: " + (Float.toString(previousWeight)) + " kg.");
-    }
-
-    public void saveWeight(View view) {
-        EditText weightInput = (EditText) findViewById(R.id.weightInput);
-        weight =  Float.parseFloat(weightInput.getText().toString());
 
         Switch toggleLossGain = findViewById(R.id.toggleLossGain);
 
@@ -70,6 +65,11 @@ public class WeightActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void saveWeight(View view) {
+        EditText weightInput = (EditText) findViewById(R.id.weightInput);
+        weight =  Float.parseFloat(weightInput.getText().toString());
 
         //jos paino on vähemmän kuin viimeksi, pisteet erotuksesta jne.
         if (previousWeight == 0) {
@@ -82,7 +82,7 @@ public class WeightActivity extends AppCompatActivity {
             weightPoints -= (int) (previousWeight - weight);
             previousWeight = weight;
         } else if ((weight > previousWeight) && (weightLoss = true)) { // painan enemmän kuin ennen mutta haluan pudottaa painoa
-            weightPoints -= (int) (weight - previousWeight);
+            weightPoints += (int) (weight - previousWeight);
             previousWeight = weight;
         } else if ((weight > previousWeight) && (weightLoss = false)) { // painan enemmän kuin ennen mutta en halua pudottaa painoa
             weightPoints += (int) (weight - previousWeight);
