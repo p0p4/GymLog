@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Gymlog</string>
-    <string name="new_movement">New Movement:</string>
+    <string name="new_movement">New Exercise:</string>
     <string name="btn_end_week">End Week</string>
     <string name="btn_end_day">End Day</string>
-    <string name="btn_next_move">Next Move</string>
-    <string name="week_plan_title">Create Week Plan</string>
+    <string name="btn_next_move">Next</string>
+    <string name="week_plan_title">Create Workout Plan</string>
     <string name="w_name">Plan Name</string>
     <string name="w_continue">Continue</string>
     <string name="w_warning">Continuing will delete your previous plan*</string>
