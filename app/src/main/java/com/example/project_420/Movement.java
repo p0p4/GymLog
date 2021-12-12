@@ -62,19 +62,19 @@ public class Movement
     {
         if (getWeight() == 0 && getDuration() == 0)
         {
-            return this.name + "\nSets: " + this.sets + ",  Reps: " + this.reps;
+            return this.name + "\nSets: " + this.sets + ", Reps: " + this.reps;
         }
         else if (getDuration() == 0)
         {
-            return this.name + "\nSets: " + this.sets + ",  Reps: " + this.reps + ",  Weight: " + this.weight + "kg";
+            return this.name + "\nSets: " + this.sets + ", Reps: " + this.reps + ", Weight: " + this.weight + "kg";
         }
         else if (getWeight() == 0)
         {
-            return this.name + "\nSets: " + this.sets + ",  Reps: " + this.reps + ",  Duration: " + this.duration + "s";
+            return this.name + "\nSets: " + this.sets + ", Reps: " + this.reps + ", Duration: " + this.duration + "s";
         }
         else
         {
-            return this.name + "\nSets: " + this.sets + ",  Reps: " + this.reps + ",  Weight: " + this.weight + "kg,  Duration: " + this.duration + "s";
+            return this.name + "\nSets: " + this.sets + ", Reps: " + this.reps + ", Weight: " + this.weight + "kg, Duration: " + this.duration + "s";
         }
     }
 }
