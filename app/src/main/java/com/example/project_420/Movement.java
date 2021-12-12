@@ -13,9 +13,9 @@ enum Day
 
 public class Movement
 {
-    private Day day;
-    private String name;
-    private int sets, reps, weight, duration;
+    private final Day day;
+    private final String name;
+    private final int sets, reps, weight, duration;
 
     public Movement(Day day, String name, int sets, int reps, int weight, int duration)
     {
@@ -58,8 +58,8 @@ public class Movement
     }
 
     @Override
-    public String toString() {
-
+    public String toString()
+    {
         if (getWeight() == 0 && getDuration() == 0)
         {
             return this.name + "\nSets: " + this.sets + ",  Reps: " + this.reps;

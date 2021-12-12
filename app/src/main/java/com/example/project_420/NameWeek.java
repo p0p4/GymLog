@@ -34,7 +34,7 @@ public class NameWeek extends AppCompatActivity
         getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 
-    public void planWeekButton (View view)
+    public void continueButton (View view)
     {
         String name = ((EditText)findViewById(R.id.nameWeekInput)).getText().toString();
 

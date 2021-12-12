@@ -1,6 +1,5 @@
 package com.example.project_420;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -65,23 +64,27 @@ public class MainActivity extends AppCompatActivity {
 
         TextView tvFitnessIndex = findViewById(R.id.tvFitnessIndex);
 
-        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
+        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", MODE_PRIVATE);
         fitnessIndex += ((gymlogPrefs.getInt("weightPointsPref", 0)) + ((gymlogPrefs.getInt("sleepPointsPref", 0))) + ((gymlogPrefs.getInt("workoutScore", 0))));
         tvFitnessIndex.setText("Performance under current plan: " + fitnessIndex);
     }
 
     public void clearProgram(View view) {
-        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
+        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", MODE_PRIVATE);
         SharedPreferences sharedPrefs = getSharedPreferences("Week Data", MODE_PRIVATE);
+        SharedPreferences workoutPrefs = getSharedPreferences("workoutPrefs", MODE_PRIVATE);
 
         SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
         SharedPreferences.Editor sharedPrefsEditor = sharedPrefs.edit();
+        SharedPreferences.Editor workoutPrefsEditor = workoutPrefs.edit();
 
         gymlogPrefsEditor.clear();
         sharedPrefsEditor.clear();
+        workoutPrefsEditor.clear();
 
         gymlogPrefsEditor.apply();
         sharedPrefsEditor.apply();
+        workoutPrefsEditor.apply();
 
         TextView tvFitnessIndex = findViewById(R.id.tvFitnessIndex);
 
