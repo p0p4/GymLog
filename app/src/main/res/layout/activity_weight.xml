@@ -3,77 +3,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#d6d7d7"
+    tools:context=".WeightActivity">
 
-    <TextView
-        android:id="@+id/Weight"
+    <EditText
+        android:id="@+id/weightInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:text="@string/weight"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/StartWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
-        android:layout_marginBottom="98dp"
-        android:text="@string/start"
-        app:layout_constraintBottom_toBottomOf="@+id/GoalWeight"
-        app:layout_constraintEnd_toEndOf="@+id/GoalWeight"
-        app:layout_constraintStart_toStartOf="@+id/CurrentWeight"
-        app:layout_constraintTop_toTopOf="@+id/CurrentWeight" />
-
-    <TextView
-        android:id="@+id/CurrentWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="124dp"
-        android:text="@string/current"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/GoalWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="199dp"
-        android:layout_marginBottom="199dp"
-        android:text="@string/goal"
-        app:layout_constraintBottom_toBottomOf="@+id/RemainingWeight"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/CurrentWeight" />
-
-    <TextView
-        android:id="@+id/WeightChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="99dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/change"
-        app:layout_constraintBottom_toBottomOf="@+id/RemainingWeight"
-        app:layout_constraintEnd_toEndOf="@+id/CurrentWeight"
-        app:layout_constraintStart_toStartOf="@+id/RemainingWeight"
-        app:layout_constraintTop_toTopOf="@+id/GoalWeight" />
-
-    <TextView
-        android:id="@+id/RemainingWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginBottom="190dp"
-        android:text="@string/remaining"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Weight this morning (kg)"
+        android:inputType="textPersonName"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Weight"
+        app:layout_constraintEnd_toStartOf="@+id/btn_SaveWeight"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_SaveWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="saveWeight"
+        android:text="Save"
+        app:layout_constraintBaseline_toBaselineOf="@+id/weightInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/weightInput" />
+
+    <TextView
+        android:id="@+id/tvPreviousWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="64dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/weightInput"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Switch
+        android:id="@+id/toggleLossGain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="3dp"
+        android:text="Gain/Lose Weight"
+        app:layout_constraintEnd_toStartOf="@+id/btn_SaveWeight"
+        app:layout_constraintTop_toBottomOf="@+id/btn_SaveWeight" />
 </androidx.constraintlayout.widget.ConstraintLayout>

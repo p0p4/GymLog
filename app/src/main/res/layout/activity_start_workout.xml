@@ -9,14 +9,15 @@
 
     <ListView
         android:id="@+id/listview"
+        android:choiceMode="multipleChoice"
         android:layout_width="match_parent"
-        android:layout_height="525dp"
+        android:layout_height="567dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="80dp"
-        android:layout_marginBottom="0dp">
+        android:layout_marginBottom="100dp">
 
     </ListView>
 
@@ -30,5 +31,18 @@
         android:layout_marginTop="5dp"
         android:text="TextView"
         android:textSize="34sp" />
+
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="110dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="151dp"
+        android:layout_marginEnd="151dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="doneButton"
+        android:text="@string/doneButton" />
 
 </RelativeLayout>
