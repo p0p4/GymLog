@@ -108,6 +108,13 @@ public class WeightActivity extends AppCompatActivity {
         startActivity(main);
     }
 
+    public void deleteWeight (View view) {
+        SharedPreferences weightPrefs = getSharedPreferences("weightPrefs",MODE_PRIVATE);
+        SharedPreferences.Editor weightPrefsEditor = weightPrefs.edit();
+        weightPrefsEditor.clear();
+        weightPrefsEditor.apply();
+    }
+
     public float getPreviousWeight() {
         return previousWeight;
     }

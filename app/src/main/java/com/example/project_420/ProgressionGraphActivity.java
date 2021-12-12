@@ -101,7 +101,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
             int sleepTargetIndex =+ sleepIndex + 1;
 
             for (i = 0; i < sleepTargetIndex; i++) {
-                sleepGoal.appendData(new DataPoint(i,sleepTarget),true,9999);       //sleep goal reference linegraph
+                sleepGoal.appendData(new DataPoint(i,sleepTarget),true,9999);       //sleep goal reference line
             }
 
             sleepGoal.setColor(Color.GREEN);

@@ -73,27 +73,18 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", MODE_PRIVATE);
         SharedPreferences sharedPrefs = getSharedPreferences("Week Data", MODE_PRIVATE);
         SharedPreferences workoutPrefs = getSharedPreferences("workoutPrefs", MODE_PRIVATE);
-        SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs",MODE_PRIVATE);
-        SharedPreferences weightPrefs = getSharedPreferences("weightPrefs",MODE_PRIVATE);
-
 
         SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
         SharedPreferences.Editor sharedPrefsEditor = sharedPrefs.edit();
         SharedPreferences.Editor workoutPrefsEditor = workoutPrefs.edit();
-        SharedPreferences.Editor sleepPrefsEditor = sleepPrefs.edit();
-        SharedPreferences.Editor weightPrefsEditor = weightPrefs.edit();
 
         gymlogPrefsEditor.clear();
         sharedPrefsEditor.clear();
         workoutPrefsEditor.clear();
-        sleepPrefsEditor.clear();
-        weightPrefsEditor.clear();
 
         gymlogPrefsEditor.apply();
         sharedPrefsEditor.apply();
         workoutPrefsEditor.apply();
-        sleepPrefsEditor.apply();
-        weightPrefsEditor.apply();
 
         TextView tvFitnessIndex = findViewById(R.id.tvFitnessIndex);
 

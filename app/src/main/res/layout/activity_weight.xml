@@ -53,4 +53,16 @@
         android:text="Gain/Lose Weight"
         app:layout_constraintEnd_toStartOf="@+id/btn_SaveWeight"
         app:layout_constraintTop_toBottomOf="@+id/btn_SaveWeight" />
+
+    <Button
+        android:id="@+id/deleteWeightButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:onClick="deleteWeight"
+        android:text="@string/deleteWeightButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleLossGain" />
 </androidx.constraintlayout.widget.ConstraintLayout>
