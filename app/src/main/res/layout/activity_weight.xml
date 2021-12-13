@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:onClick="saveWeight"
         android:text="@string/save_weight"
+        android:clickable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/weightInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/weightInput" />

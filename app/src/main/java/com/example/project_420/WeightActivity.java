@@ -6,7 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -52,6 +55,33 @@ public class WeightActivity extends AppCompatActivity {
 
         TextView tvPreviousWeight = findViewById(R.id.tvPreviousWeight);
         tvPreviousWeight.setText("Your previous weight was: " + (previousWeight) + " kg.");
+
+        TextView weightInput = findViewById(R.id.weightInput);
+        Button saveWeight = findViewById(R.id.btn_SaveWeight);
+        weightInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String input = weightInput.getText().toString();
+                if (!input.contains(" ") && !input.contains(",") && !input.contains("-") && input.indexOf(".") == input.lastIndexOf(".")
+                ){
+                    saveWeight.setEnabled(true);
+                } else {
+                    saveWeight.setEnabled(false);
+                }
+
+            }
+        });
+
     }
 
     public void saveWeight(View view) {
