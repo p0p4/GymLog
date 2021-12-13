@@ -35,7 +35,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
     }
 
     /**
-     * Maked and shows sleep, weight or workoutscore graph based on which radiobutton is pressed.
+     * Makes and shows sleep, weight or workoutscore graph based on which radiobutton is pressed.
      */
 
     public void updateUI () {
