@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -32,7 +34,7 @@ public class PlanWeek extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_week);
 
-        Log.d(TAG, "onCreate() — called");
+        Log.d(TAG, "onCreate() - called");
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.app_logo);
@@ -48,6 +50,11 @@ public class PlanWeek extends AppCompatActivity
         repsEdit = findViewById(R.id.repsInput);
         weightEdit = findViewById(R.id.weightInput);
         durationEdit = findViewById(R.id.durationInput);
+
+        validateInput(setsEdit);
+        validateInput(repsEdit);
+        validateInput(weightEdit);
+        validateInput(durationEdit);
 
         refreshTitle();
     }
@@ -166,10 +173,36 @@ public class PlanWeek extends AppCompatActivity
         return dayName;
     }
 
+    private void validateInput(EditText editText)
+    {
+        editText.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count){}
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                String input = editText.getText().toString();
+                boolean enabled = !input.contains(" ") && !input.contains(",") && !input.contains("-") && !input.contains(".") && !input.contains("0");
+
+                (findViewById(R.id.btnNextMove)).setEnabled(enabled);
+                (findViewById(R.id.btnEndDay)).setEnabled(enabled);
+                (findViewById(R.id.btnEndWeek)).setEnabled(enabled);
+
+                if(!enabled)
+                {
+                    editText.setError("Invalid input!");
+                }
+            }
+        });
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(TAG, "onPause() — called");
+        Log.d(TAG, "onPause() - called");
 
         week.save(this);
     }

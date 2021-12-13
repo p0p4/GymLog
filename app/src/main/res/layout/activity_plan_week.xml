@@ -7,6 +7,9 @@
     android:background="#D6D7D7"
     tools:context=".PlanWeek">
 
+    <!--Author
+    Tino Behnen-->
+
     <!--
         Title for activity
     -->
@@ -121,7 +124,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textPersonName"
             android:maxLength="16"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -157,6 +160,8 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:maxLength="2"
+            android:digits="123456789"
+            android:singleLine = "true"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,6 +181,7 @@
         app:counterEnabled="true"
         app:counterMaxLength="2"
         app:helperText="required*"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setsInputLayout"
