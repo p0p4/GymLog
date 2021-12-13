@@ -19,4 +19,10 @@
     <string name="doneButton">Workout done</string>
     <string name="deleteSleepButton">Delete Sleep Data</string>
     <string name="deleteWeightButton">Delete Weight Data</string>
+    <string name="weight_this_morning">Weight this morning (kg)</string>
+    <string name="save_weight">Save</string>
+    <string name="gain_lose_weight">Gain/Lose Weight</string>
+    <string name="hours_slept">Hours slept last night</string>
+    <string name="minus_sleep">-</string>
+    <string name="plus_sleep">+</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.project_420;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * @author matiasnäppä
@@ -21,56 +23,46 @@ import java.util.ArrayList;
 public class SleepActivity extends AppCompatActivity {
 
     private float sleep, sleepTarget;
-    private int sleepPoints,i, sleepIndex;
+    private int sleepPoints, i;
+    private static final String sleepPointsPref = "sleepPointsPref", sleepTargetPref = "sleepTargetPref";
+    ArrayList<Float> sleepList;
 
-
-    private Button btnIncrementTarget;
-    private Button btnDecreaseTarget;
-    private Button btn_SaveWeight;
-    private TextView tvSleepPoints;
-    private TextView tvSleepTarget;
-    private EditText weightInput;
-
-    public static final String sleepPointsPref = "sleepPointsPref";
-    public static final String sleepTargetPref = "sleepTargetPref";
-
-    ArrayList<Float> sleepList = new ArrayList<>();
-
-    private final View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.btnIncrementTarget:
-                    incrementTarget();
-                    break;
-                case R.id.btnDecreaseTarget:
-                    decreaseTarget();
-                    break;
-            }
+    @SuppressLint("NonConstantResourceId")
+    private final View.OnClickListener clickListener = view -> {
+        switch (view.getId()) {
+            case R.id.btnIncrementTarget:
+                incrementTarget();
+                break;
+            case R.id.btnDecreaseTarget:
+                decreaseTarget();
+                break;
         }
     };
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.app_logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-        btnIncrementTarget = findViewById(R.id.btnIncrementTarget);
+        sleepList = new ArrayList<>();
+
+        Button btnIncrementTarget = findViewById(R.id.btnIncrementTarget);
         btnIncrementTarget.setOnClickListener(clickListener);
 
-        btnDecreaseTarget = findViewById(R.id.btnDecreaseTarget);
+        Button btnDecreaseTarget = findViewById(R.id.btnDecreaseTarget);
         btnDecreaseTarget.setOnClickListener(clickListener);
 
         TextView tvSleepTarget = findViewById(R.id.tvSleepTarget);
         TextView tvSleepPoints = findViewById(R.id.tvSleepPoints);
 
         SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs", Context.MODE_PRIVATE);
-        sleepIndex = sleepPrefs.getInt("size",0);
-        for(i = 0; i < sleepIndex; i++) {
+        int sleepIndex = sleepPrefs.getInt("size", 0);
+        for (i = 0; i < sleepIndex; i++) {
             sleepList.add(sleepPrefs.getFloat(Integer.toString(i), 0));
         }
 
@@ -84,54 +76,59 @@ public class SleepActivity extends AppCompatActivity {
 
     public void saveSleep(View view) {
         EditText sleepInput = findViewById(R.id.sleepInput);
-        sleepTarget = getSleepTarget();
-        sleep = Integer.parseInt(sleepInput.getText().toString());
 
-        if (sleep > sleepTarget) {
-            sleepPoints += sleep - sleepTarget;
-        } else {
-            sleepPoints -= sleepTarget - sleep;
+        if (!sleepInput.getText().toString().equals("")) {
+            sleepTarget = getSleepTarget();
+            sleep = Integer.parseInt(sleepInput.getText().toString());
+
+            if (sleep > sleepTarget) {
+                sleepPoints += sleep - sleepTarget;
+            } else {
+                sleepPoints -= sleepTarget - sleep;
+            }
+
+            sleepList.add(sleep);
+            SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sleepPrefs.edit();
+            for (i = 0; i < sleepList.size(); i++) {
+                editor.putFloat(Integer.toString(i), sleepList.get(i));
+            }
+            editor.putInt("size", sleepList.size());
+            editor.apply();
+
+            SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
+
+            gymlogPrefsEditor.putFloat(sleepTargetPref, sleepTarget);
+            gymlogPrefsEditor.putInt(sleepPointsPref, sleepPoints);
+
+            gymlogPrefsEditor.apply();
+
+            Intent main = new Intent(this, MainActivity.class);
+            startActivity(main);
         }
-
-        sleepList.add(sleep);
-        SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sleepPrefs.edit();
-        for (i = 0; i < sleepList.size(); i++) {
-            editor.putFloat(Integer.toString(i), sleepList.get(i));
-        }
-        editor.putInt("size", sleepList.size());
-        editor.apply();
-
-        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
-
-        gymlogPrefsEditor.putFloat(sleepTargetPref, sleepTarget);
-        gymlogPrefsEditor.putInt(sleepPointsPref, sleepPoints);
-
-        gymlogPrefsEditor.apply();
-
-        Intent main = new Intent(this, MainActivity.class);
-        startActivity(main);
     }
 
+    @SuppressLint("SetTextI18n")
     public void incrementTarget() {
-        TextView tvSleepTarget = findViewById(R.id.tvSleepTarget);
         sleepTarget = getSleepTarget() + 1;
-        tvSleepTarget.setText("Your sleep target is " + sleepTarget + " hours.");
+        ((TextView) findViewById(R.id.tvSleepTarget))
+                .setText("Your sleep target is " + sleepTarget + " hours.");
     }
 
+    @SuppressLint("SetTextI18n")
     public void decreaseTarget() {
-        TextView tvSleepTarget = findViewById(R.id.tvSleepTarget);
         sleepTarget = getSleepTarget() - 1;
-        tvSleepTarget.setText("Your sleep target is " + sleepTarget + " hours.");
+        ((TextView) findViewById(R.id.tvSleepTarget))
+                .setText("Your sleep target is " + sleepTarget + " hours.");
     }
 
     /**
      * Deletes all sleep data from sharedpreferences
      */
 
-    public void deleteSleep (View view) {
-        SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs",MODE_PRIVATE);
+    public void deleteSleep(View view) {
+        SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs", MODE_PRIVATE);
         SharedPreferences.Editor sleepPrefsEditor = sleepPrefs.edit();
         sleepPrefsEditor.clear();
         sleepPrefsEditor.apply();

@@ -1,5 +1,6 @@
 package com.example.project_420;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,38 +20,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.app_logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         updateViews();
     }
 
-    public void startButton (View view) {
+    public void startButton(View view) {
         Intent intent = new Intent(this, StartWorkoutActivity.class);
         startActivity(intent);
     }
 
-    public void progressButton (View view) {
+    public void progressButton(View view) {
         Intent progressIntent = new Intent(this, ProgressionGraphActivity.class);
         startActivity(progressIntent);
     }
 
-    public void nameWeekButton (View view) {
+    public void nameWeekButton(View view) {
         Intent nameWeekIntent = new Intent(this, NameWeek.class);
         startActivity(nameWeekIntent);
     }
 
-    public void sleepButton (View view) {
+    public void sleepButton(View view) {
         Intent sleepIntent = new Intent(this, SleepActivity.class);
         startActivity(sleepIntent);
     }
 
-    public void weightButton (View view) {
+    public void weightButton(View view) {
         Intent weightIntent = new Intent(this, WeightActivity.class);
         startActivity(weightIntent);
     }
 
+    @SuppressLint("SetTextI18n")
     public void updateViews() {
         String programStringDefault = "You don't currently have a workout plan.";
         SharedPreferences sharedPrefs = getSharedPreferences("Week Data", MODE_PRIVATE);
@@ -69,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         tvFitnessIndex.setText("Performance under current plan: " + fitnessIndex);
     }
 
+    @SuppressLint("SetTextI18n")
     public void clearProgram(View view) {
         SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", MODE_PRIVATE);
         SharedPreferences sharedPrefs = getSharedPreferences("Week Data", MODE_PRIVATE);

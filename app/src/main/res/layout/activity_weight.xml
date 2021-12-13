@@ -14,21 +14,22 @@
         android:layout_marginStart="9dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Weight this morning (kg)"
+        android:hint="@string/weight_this_morning"
         android:inputType="textPersonName"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_SaveWeight"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextFields" />
 
     <Button
         android:id="@+id/btn_SaveWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="saveWeight"
-        android:text="Save"
+        android:text="@string/save_weight"
         app:layout_constraintBaseline_toBaselineOf="@+id/weightInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/weightInput" />
@@ -39,20 +40,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginBottom="64dp"
-        android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/weightInput"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/toggleLossGain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="66dp"
         android:layout_marginEnd="3dp"
-        android:text="Gain/Lose Weight"
+        android:text="@string/gain_lose_weight"
         app:layout_constraintEnd_toStartOf="@+id/btn_SaveWeight"
-        app:layout_constraintTop_toBottomOf="@+id/btn_SaveWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_SaveWeight"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/deleteWeightButton"
