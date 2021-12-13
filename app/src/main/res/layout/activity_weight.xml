@@ -7,6 +7,13 @@
     android:background="#d6d7d7"
     tools:context=".WeightActivity">
 
+    <!--Author
+    Matias Nappa-->
+
+    <!--
+    Edittext for weight input.
+    -->
+
     <EditText
         android:id="@+id/weightInput"
         android:layout_width="wrap_content"
@@ -25,6 +32,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextFields" />
 
+    <!--
+    Button for saving weight data
+    -->
+
     <Button
         android:id="@+id/btn_SaveWeight"
         android:layout_width="wrap_content"
@@ -36,6 +47,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/weightInput" />
 
+    <!--
+    Textview that shows previous weight.
+    -->
+
     <TextView
         android:id="@+id/tvPreviousWeight"
         android:layout_width="wrap_content"
@@ -45,6 +60,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/weightInput"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!--
+   Switch for toggling between wanting to lose or gain weight.
+   -->
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/toggleLossGain"
@@ -56,6 +75,10 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_SaveWeight"
         app:layout_constraintTop_toBottomOf="@+id/btn_SaveWeight"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <!--
+    Button that deletes all weight data from sharedpreferences.
+    -->
 
     <Button
         android:id="@+id/deleteWeightButton"

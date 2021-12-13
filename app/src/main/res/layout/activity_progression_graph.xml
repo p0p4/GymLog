@@ -7,6 +7,13 @@
     android:background="#D6D7D7"
     tools:context=".ProgressionGraphActivity">
 
+    <!--Author
+    Niklas Malmgren-->
+
+    <!--
+        Graphview
+    -->
+
     <com.jjoe64.graphview.GraphView
         android:id="@+id/GraphView"
         android:layout_width="379dp"
@@ -16,6 +23,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="145dp"
         android:layout_marginBottom="0dp" />
+
+    <!--
+    Radiobuttons to switch between sleep, weight and workoutscore graphs
+    -->
 
     <RadioGroup
         android:id="@+id/radioGroup"

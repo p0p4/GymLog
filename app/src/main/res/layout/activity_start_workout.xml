@@ -7,6 +7,13 @@
     android:background="#D6D7D7"
     tools:context=".StartWorkoutActivity">
 
+    <!--Author
+    Niklas Malmgren-->
+
+    <!--
+    Listview for workout plans different movements
+    -->
+
     <ListView
         android:id="@+id/listview"
         android:choiceMode="multipleChoice"
@@ -21,6 +28,10 @@
 
     </ListView>
 
+    <!--
+    Textview that shows current day
+    -->
+
     <TextView
         android:textAlignment="center"
         android:id="@+id/Day"
@@ -31,6 +42,10 @@
         android:layout_marginTop="5dp"
         android:text="TextView"
         android:textSize="34sp" />
+
+    <!--
+    Button for saving workoutscore
+    -->
 
     <Button
         android:id="@+id/doneButton"

@@ -7,6 +7,13 @@
     android:background="#d6d7d7"
     tools:context=".SleepActivity">
 
+    <!--Author
+    Matias Nappa-->
+
+    <!--
+    Button for saving sleep data
+    -->
+
     <Button
         android:id="@+id/btn_SaveSleep"
         android:layout_width="wrap_content"
@@ -17,6 +24,10 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/sleepInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sleepInput" />
+
+    <!--
+    Edittext for sleep hours input.
+    -->
 
     <EditText
         android:id="@+id/sleepInput"
@@ -34,6 +45,10 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_SaveSleep"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!--
+    Textview that shows sleep duration target.
+    -->
+
     <TextView
         android:id="@+id/tvSleepTarget"
         android:layout_width="wrap_content"
@@ -44,6 +59,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!--
+    Textview that shows how how much more/less user has slept compared to sleep target.
+    -->
+
     <TextView
         android:id="@+id/tvSleepPoints"
         android:layout_width="wrap_content"
@@ -53,6 +72,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/sleepInput"
         app:layout_constraintEnd_toEndOf="@+id/sleepInput" />
+
+    <!--
+    Button that decreases sleep target by 1h.
+    -->
 
     <Button
         android:id="@+id/btnDecreaseTarget"
@@ -67,6 +90,10 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!--
+    Button that increases sleep target by 1h.
+    -->
+
     <Button
         android:id="@+id/btnIncrementTarget"
         android:layout_width="wrap_content"
@@ -75,6 +102,10 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/btnDecreaseTarget"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnDecreaseTarget" />
+
+    <!--
+    Button that deletes all sleep data from sharedpreferences.
+    -->
 
     <Button
         android:id="@+id/deleteSleepButton"
