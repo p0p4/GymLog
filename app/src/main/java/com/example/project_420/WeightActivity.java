@@ -123,6 +123,9 @@ public class WeightActivity extends AppCompatActivity {
 
                         TextView tvPreviousWeight = findViewById(R.id.tvPreviousWeight);
                         tvPreviousWeight.setText("Your previous weight was: " + (0.0) + " kg.");
+
+                        previousWeight = 0;
+                        weightPoints = 0;
                     }
                 })
                 .setNegativeButton("No",null)
