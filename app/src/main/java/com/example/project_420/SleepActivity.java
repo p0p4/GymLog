@@ -93,7 +93,8 @@ public class SleepActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String input = sleepInput.getText().toString();
-                if (!input.contains(" ") && !input.contains(",")){
+                if (!input.contains(" ") && !input.contains(",") && !input.contains("-") && input.indexOf(".") == input.lastIndexOf(".")
+                ){
                     saveSLEep.setEnabled(true);
                 } else {
                     saveSLEep.setEnabled(false);
