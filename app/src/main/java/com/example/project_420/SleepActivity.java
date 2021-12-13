@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,6 +76,32 @@ public class SleepActivity extends AppCompatActivity {
 
         tvSleepTarget.setText("Your sleep target is " + sleepTarget + " hours.");
         tvSleepPoints.setText("Sleep balance: " + (sleepPoints));
+
+        TextView sleepInput = findViewById(R.id.sleepInput);
+        Button saveSLEep = findViewById(R.id.btn_SaveSLeep);
+        sleepInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String input = sleepInput.getText().toString();
+                if (!input.contains(" ") && !input.contains(",")){
+                    saveSLEep.setEnabled(true);
+                } else {
+                    saveSLEep.setEnabled(false);
+                }
+
+            }
+        });
+
     }
 
     public void saveSleep(View view) {
@@ -81,7 +109,7 @@ public class SleepActivity extends AppCompatActivity {
 
         if (!sleepInput.getText().toString().equals("")) {
             sleepTarget = getSleepTarget();
-            sleep = Integer.parseInt(sleepInput.getText().toString());
+            sleep = Float.parseFloat(sleepInput.getText().toString());
 
             if (sleep > sleepTarget) {
                 sleepPoints += sleep - sleepTarget;

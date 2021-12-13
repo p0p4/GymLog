@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:onClick="saveSleep"
         android:text="@string/save_weight"
+        android:clickable="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/sleepInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sleepInput" />
