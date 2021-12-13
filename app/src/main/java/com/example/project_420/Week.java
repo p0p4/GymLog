@@ -18,6 +18,7 @@ public class Week
 {
     private ArrayList<Movement> movements;
     private static Week instance;
+    private boolean loaded = false;
 
     public static Week getInstance()
     {
@@ -64,19 +65,24 @@ public class Week
         String json = gson.toJson(this.movements);
         editor.putString("movements", json);
         editor.apply();
+
+        loaded = false;
     }
 
     public void load(Context context)
     {
-        SharedPreferences sharedPrefs = context.getSharedPreferences("Week Data", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPrefs.getString("movements", null);
-        Type type = new TypeToken<ArrayList<Movement>>() {}.getType();
-        this.movements = gson.fromJson(json, type);
-
-        if (this.movements == null)
+        if (!loaded)
         {
-            this.movements = new ArrayList<>();
+            SharedPreferences sharedPrefs = context.getSharedPreferences("Week Data", Context.MODE_PRIVATE);
+            Gson gson = new Gson();
+            String json = sharedPrefs.getString("movements", null);
+            Type type = new TypeToken<ArrayList<Movement>>() {}.getType();
+            this.movements = gson.fromJson(json, type);
+
+            if (this.movements == null) {
+                this.movements = new ArrayList<>();
+            }
+            loaded = true;
         }
     }
 }

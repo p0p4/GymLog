@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="saveSleep"
-        android:text="Save"
+        android:text="@string/save_weight"
         app:layout_constraintBaseline_toBaselineOf="@+id/sleepInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sleepInput" />
@@ -25,7 +25,7 @@
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="69dp"
         android:ems="10"
-        android:hint="Hours slept last night"
+        android:hint="@string/hours_slept"
         android:inputType="textPersonName"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tvSleepTarget"
@@ -37,7 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btnIncrementTarget"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +48,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="64dp"
-        android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/sleepInput"
         app:layout_constraintEnd_toEndOf="@+id/sleepInput" />
@@ -61,7 +59,7 @@
         android:layout_marginStart="6dp"
         android:layout_marginEnd="11dp"
         android:layout_marginBottom="187dp"
-        android:text="-"
+        android:text="@string/minus_sleep"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnIncrementTarget"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -71,8 +69,20 @@
         android:id="@+id/btnIncrementTarget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+"
+        android:text="@string/plus_sleep"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnDecreaseTarget"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnDecreaseTarget" />
+
+    <Button
+        android:id="@+id/deleteSleepButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:onClick="deleteSleep"
+        android:text="@string/deleteSleepButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDecreaseTarget" />
 </androidx.constraintlayout.widget.ConstraintLayout>

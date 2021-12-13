@@ -16,7 +16,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 /**
  * Shows sleep,weight and progression graphs
  * @author Niklas Malmgren
- * version 1.1
+ * @version 1.1
  */
 
 public class ProgressionGraphActivity extends AppCompatActivity {
@@ -33,6 +33,10 @@ public class ProgressionGraphActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.drawable.app_logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
+
+    /**
+     * Makes and shows sleep, weight or workoutscore graph based on which radiobutton is pressed.
+     */
 
     public void updateUI () {
         final RadioGroup rg = findViewById(R.id.radioGroup);
@@ -101,7 +105,7 @@ public class ProgressionGraphActivity extends AppCompatActivity {
             int sleepTargetIndex =+ sleepIndex + 1;
 
             for (i = 0; i < sleepTargetIndex; i++) {
-                sleepGoal.appendData(new DataPoint(i,sleepTarget),true,9999);       //sleep goal reference linegraph
+                sleepGoal.appendData(new DataPoint(i,sleepTarget),true,9999);       //sleep goal reference line
             }
 
             sleepGoal.setColor(Color.GREEN);
@@ -113,6 +117,10 @@ public class ProgressionGraphActivity extends AppCompatActivity {
 
         }
 }
+
+    /**
+     * Runs updateUI method when a radiobutton is pressed
+     */
 
         public void buttonPressed(View view) {
         updateUI();
