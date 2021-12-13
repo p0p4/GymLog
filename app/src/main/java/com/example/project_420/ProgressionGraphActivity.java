@@ -53,8 +53,9 @@ public class ProgressionGraphActivity extends AppCompatActivity {
             graphView.getViewport().setXAxisBoundsManual(true);
             graphView.getViewport().setMaxX(workoutIndex);
 
+            series.appendData(new DataPoint(0,0),true,9999);
             for (i = 0; i < workoutIndex; i++) {
-                series.appendData(new DataPoint(i,workoutPrefs.getInt(Integer.toString(i),0)),true,9999);
+                series.appendData(new DataPoint((i+1),workoutPrefs.getInt(Integer.toString(i),0)),true,9999);
             }
 
         graphView.setTitle("Workout score");
