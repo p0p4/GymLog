@@ -35,6 +35,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
     /**
      * Gets workout plan from week.class
      * Shows today's workout as a listview
+     * If there is no workout for the day, shows "rest day" message.
      */
 
     @Override
@@ -100,17 +101,13 @@ public class StartWorkoutActivity extends AppCompatActivity {
             ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, arrayList);
             listView.setAdapter(arrayAdapter);
         }
-
-        SharedPreferences workoutPrefs = getSharedPreferences("workoutPrefs", Context.MODE_PRIVATE);
-        workoutIndex = workoutPrefs.getInt("size",0);
-        for(i = 0; i < workoutIndex; i++) {
-            workoutList.add(workoutPrefs.getInt(Integer.toString(i), 0));
-        }
     }
 
     /**
-     * Get workoutscore from sharedpreferences.
-     * Calculates new workoutscore and saves it to sharedpreferences.
+     * Gets workoutscore from sharedpreferences. (gymlogPrefs)
+     * Calculates new workoutscore and saves it to sharedpreferences. (gymlogPrefs)
+     * Gets all previous workoutscores from sharedpreferences and adds them to an arraylist. (workoutPrefs)
+     * Saves previously made arraylist to sharedpreferences. (workoutPrefs)
      */
 
     public void doneButton (View view) {
@@ -129,8 +126,13 @@ public class StartWorkoutActivity extends AppCompatActivity {
         gymlogPrefsEditor.putInt("workoutScore",workoutScore);
         gymlogPrefsEditor.apply();
 
-        workoutList.add(workoutScore);
         SharedPreferences workoutPrefs = getSharedPreferences("workoutPrefs", Context.MODE_PRIVATE);
+        workoutIndex = workoutPrefs.getInt("size",0);
+        for(i = 0; i < workoutIndex; i++) {
+            workoutList.add(workoutPrefs.getInt(Integer.toString(i), 0));
+        }
+
+        workoutList.add(workoutScore);
         SharedPreferences.Editor editor = workoutPrefs.edit();
         for (i = 0; i < workoutList.size(); i++) {
             editor.putInt(Integer.toString(i), workoutList.get(i));
