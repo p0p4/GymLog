@@ -108,6 +108,10 @@ public class WeightActivity extends AppCompatActivity {
         startActivity(main);
     }
 
+    /**
+     * Deletes all weight data from sharedpreferences
+     */
+
     public void deleteWeight (View view) {
         SharedPreferences weightPrefs = getSharedPreferences("weightPrefs",MODE_PRIVATE);
         SharedPreferences.Editor weightPrefsEditor = weightPrefs.edit();

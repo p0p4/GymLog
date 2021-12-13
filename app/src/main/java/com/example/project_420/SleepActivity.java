@@ -126,6 +126,10 @@ public class SleepActivity extends AppCompatActivity {
         tvSleepTarget.setText("Your sleep target is " + sleepTarget + " hours.");
     }
 
+    /**
+     * Deletes all sleep data from sharedpreferences
+     */
+
     public void deleteSleep (View view) {
         SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs",MODE_PRIVATE);
         SharedPreferences.Editor sleepPrefsEditor = sleepPrefs.edit();
