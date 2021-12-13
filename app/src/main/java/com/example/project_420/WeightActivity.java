@@ -97,7 +97,8 @@ public class WeightActivity extends AppCompatActivity {
     }
 
     /**
-     * Deletes all weight data from sharedpreferences
+     * Deletes all weight data from sharedpreferences.
+     * Refreshes the textviews.
      */
     public void deleteWeight(View view) {
         SharedPreferences weightPrefs = getSharedPreferences("weightPrefs", MODE_PRIVATE);

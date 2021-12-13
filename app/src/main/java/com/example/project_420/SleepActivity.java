@@ -124,7 +124,8 @@ public class SleepActivity extends AppCompatActivity {
     }
 
     /**
-     * Deletes all sleep data from sharedpreferences
+     * Deletes all sleep data from sharedpreferences.
+     * Refreshes the textviews.
      */
 
     public void deleteSleep(View view) {
@@ -132,6 +133,18 @@ public class SleepActivity extends AppCompatActivity {
         SharedPreferences.Editor sleepPrefsEditor = sleepPrefs.edit();
         sleepPrefsEditor.clear();
         sleepPrefsEditor.apply();
+
+        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs",MODE_PRIVATE);
+        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
+        gymlogPrefsEditor.putFloat(sleepTargetPref,0);
+        gymlogPrefsEditor.putInt(sleepPointsPref,0);
+        gymlogPrefsEditor.apply();
+
+        TextView tvSleepTarget = findViewById(R.id.tvSleepTarget);
+        TextView tvSleepPoints = findViewById(R.id.tvSleepPoints);
+
+        tvSleepTarget.setText("Your sleep target is " + 8 + " hours.");
+        tvSleepPoints.setText("Sleep balance: " + 0);
     }
 
     public int getSleepPoints() {
