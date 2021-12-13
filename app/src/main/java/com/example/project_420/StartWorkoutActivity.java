@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * Shows today's workout in a listview
  * @author Niklas Malmgren
- * version 1.1
+ * @version 1.1
  */
 
 public class StartWorkoutActivity extends AppCompatActivity {
@@ -31,6 +31,11 @@ public class StartWorkoutActivity extends AppCompatActivity {
     SharedPreferences gymlogPrefs;
 
     ArrayList<Integer> workoutList = new ArrayList<>();
+
+    /**
+     * Gets workout plan from week.class
+     * Shows today's workout as a listview
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +101,6 @@ public class StartWorkoutActivity extends AppCompatActivity {
             listView.setAdapter(arrayAdapter);
         }
 
-        gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
-        workoutScore = gymlogPrefs.getInt("workoutScore",0);
-
         SharedPreferences workoutPrefs = getSharedPreferences("workoutPrefs", Context.MODE_PRIVATE);
         workoutIndex = workoutPrefs.getInt("size",0);
         for(i = 0; i < workoutIndex; i++) {
@@ -106,7 +108,15 @@ public class StartWorkoutActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Get workoutscore from sharedpreferences.
+     * Calculates new workoutscore and saves it to sharedpreferences.
+     */
+
     public void doneButton (View view) {
+        gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
+        workoutScore = gymlogPrefs.getInt("workoutScore",0);
+
         for (i = 0; i < listView.getCount();i++) {
             if(listView.isItemChecked(i)) {
                 workoutScore++;
