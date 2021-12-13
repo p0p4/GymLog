@@ -2,6 +2,7 @@ package com.example.project_420;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
@@ -97,23 +99,34 @@ public class WeightActivity extends AppCompatActivity {
     }
 
     /**
-     * Deletes all weight data from sharedpreferences.
+     * Ask user if they are sure they want to delete all data.
+     * if yes: Deletes all weight data from sharedpreferences.
      * Refreshes the textviews.
+     * if no: nothing happens.
      */
     public void deleteWeight(View view) {
-        SharedPreferences weightPrefs = getSharedPreferences("weightPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor weightPrefsEditor = weightPrefs.edit();
-        weightPrefsEditor.clear();
-        weightPrefsEditor.apply();
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to delete all data?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        SharedPreferences weightPrefs = getSharedPreferences("weightPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor weightPrefsEditor = weightPrefs.edit();
+                        weightPrefsEditor.clear();
+                        weightPrefsEditor.apply();
 
-        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs",MODE_PRIVATE);
-        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
-        gymlogPrefsEditor.putFloat(weightPref,0);
-        gymlogPrefsEditor.putInt(weightPointsPref,0);
-        gymlogPrefsEditor.apply();
+                        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs",MODE_PRIVATE);
+                        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
+                        gymlogPrefsEditor.putFloat(weightPref,0);
+                        gymlogPrefsEditor.putInt(weightPointsPref,0);
+                        gymlogPrefsEditor.apply();
 
-        TextView tvPreviousWeight = findViewById(R.id.tvPreviousWeight);
-        tvPreviousWeight.setText("Your previous weight was: " + (0) + " kg.");
+                        TextView tvPreviousWeight = findViewById(R.id.tvPreviousWeight);
+                        tvPreviousWeight.setText("Your previous weight was: " + (0.0) + " kg.");
+                    }
+                })
+                .setNegativeButton("No",null)
+                .show();
     }
 
     public float getPreviousWeight() {

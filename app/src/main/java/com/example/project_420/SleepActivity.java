@@ -2,6 +2,7 @@ package com.example.project_420;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -124,27 +126,42 @@ public class SleepActivity extends AppCompatActivity {
     }
 
     /**
-     * Deletes all sleep data from sharedpreferences.
+     * Ask user if they are sure they want to delete all data.
+     * if yes: Deletes all sleep data from sharedpreferences.
      * Refreshes the textviews.
+     * if no: nothing happens.
      */
 
     public void deleteSleep(View view) {
-        SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor sleepPrefsEditor = sleepPrefs.edit();
-        sleepPrefsEditor.clear();
-        sleepPrefsEditor.apply();
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to delete all data?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        SharedPreferences sleepPrefs = getSharedPreferences("sleepPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor sleepPrefsEditor = sleepPrefs.edit();
+                        sleepPrefsEditor.clear();
+                        sleepPrefsEditor.apply();
 
-        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs",MODE_PRIVATE);
-        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
-        gymlogPrefsEditor.putFloat(sleepTargetPref,0);
-        gymlogPrefsEditor.putInt(sleepPointsPref,0);
-        gymlogPrefsEditor.apply();
+                        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs",MODE_PRIVATE);
+                        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
+                        gymlogPrefsEditor.putFloat(sleepTargetPref,8);
+                        gymlogPrefsEditor.putInt(sleepPointsPref,0);
+                        gymlogPrefsEditor.apply();
 
-        TextView tvSleepTarget = findViewById(R.id.tvSleepTarget);
-        TextView tvSleepPoints = findViewById(R.id.tvSleepPoints);
+                        sleepTarget = 8;
+                        sleepPoints = 0;
 
-        tvSleepTarget.setText("Your sleep target is " + 8 + " hours.");
-        tvSleepPoints.setText("Sleep balance: " + 0);
+                        TextView tvSleepTarget = findViewById(R.id.tvSleepTarget);
+                        TextView tvSleepPoints = findViewById(R.id.tvSleepPoints);
+
+                        tvSleepTarget.setText("Your sleep target is " + 8.0 + " hours.");
+                        tvSleepPoints.setText("Sleep balance: " + sleepPoints);
+                    }
+                })
+                .setNegativeButton("No",null)
+                .show();
+
     }
 
     public int getSleepPoints() {
