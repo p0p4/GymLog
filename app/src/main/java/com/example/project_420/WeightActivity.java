@@ -104,6 +104,15 @@ public class WeightActivity extends AppCompatActivity {
         SharedPreferences.Editor weightPrefsEditor = weightPrefs.edit();
         weightPrefsEditor.clear();
         weightPrefsEditor.apply();
+
+        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs",MODE_PRIVATE);
+        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
+        gymlogPrefsEditor.putFloat(weightPref,0);
+        gymlogPrefsEditor.putInt(weightPointsPref,0);
+        gymlogPrefsEditor.apply();
+
+        TextView tvPreviousWeight = findViewById(R.id.tvPreviousWeight);
+        tvPreviousWeight.setText("Your previous weight was: " + (0) + " kg.");
     }
 
     public float getPreviousWeight() {

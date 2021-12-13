@@ -25,12 +25,14 @@ import java.util.ArrayList;
 public class StartWorkoutActivity extends AppCompatActivity {
 
     String weekday = LocalDate.now().getDayOfWeek().name();
+    String restdaymsg = "Today is a rest day!";
     ListView listView;
     Week week;
     int workoutScore,i,workoutIndex;
     SharedPreferences gymlogPrefs;
 
     ArrayList<Integer> workoutList = new ArrayList<>();
+    ArrayList<String> arrayList = new ArrayList<>();
 
     /**
      * Gets workout plan from week.class
@@ -53,8 +55,6 @@ public class StartWorkoutActivity extends AppCompatActivity {
         week.load(this);
 
         listView = (ListView) findViewById(R.id.listview);
-
-        ArrayList<String> arrayList = new ArrayList<>();
 
         if (weekday.equals("MONDAY")) {
             arrayList.clear();
@@ -94,7 +94,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
         }
 
         if (arrayList.size()==0) {
-            arrayList.add("Today is a rest day!");
+            arrayList.add(restdaymsg);
             ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
             listView.setAdapter(arrayAdapter);
         } else {
@@ -114,11 +114,13 @@ public class StartWorkoutActivity extends AppCompatActivity {
         gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
         workoutScore = gymlogPrefs.getInt("workoutScore",0);
 
-        for (i = 0; i < listView.getCount();i++) {
-            if(listView.isItemChecked(i)) {
-                workoutScore++;
-            } else if (!(listView.isItemChecked(i))) {
-                workoutScore--;
+        if (!(arrayList.contains(restdaymsg))) {
+            for (i = 0; i < listView.getCount(); i++) {
+                if (listView.isItemChecked(i)) {
+                    workoutScore++;
+                } else if (!(listView.isItemChecked(i))) {
+                    workoutScore--;
+                }
             }
         }
 
