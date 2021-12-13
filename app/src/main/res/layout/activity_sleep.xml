@@ -8,7 +8,7 @@
     tools:context=".SleepActivity">
 
     <Button
-        android:id="@+id/btn_SaveSLeep"
+        android:id="@+id/btn_SaveSleep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="saveSleep"
@@ -27,10 +27,11 @@
         android:layout_marginBottom="69dp"
         android:ems="10"
         android:hint="@string/hours_slept"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="4"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tvSleepTarget"
-        app:layout_constraintEnd_toStartOf="@+id/btn_SaveSLeep"
+        app:layout_constraintEnd_toStartOf="@+id/btn_SaveSleep"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

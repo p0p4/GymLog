@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Current Program:"
+            android:text="@string/current_program"
             android:textSize="20sp" />
 
         <ImageButton
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="29dp"
-        android:text="Total points earned:"
+        android:text="@string/total_points_earned"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutInterface"
         app:layout_constraintStart_toStartOf="parent"

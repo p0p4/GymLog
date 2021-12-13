@@ -1,7 +1,6 @@
 package com.example.project_420;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -87,39 +86,29 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setMessage("Are you sure you want to delete all data?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", MODE_PRIVATE);
-                        SharedPreferences sharedPrefs = getSharedPreferences("Week Data", MODE_PRIVATE);
-                        SharedPreferences workoutPrefs = getSharedPreferences("workoutPrefs", MODE_PRIVATE);
+                .setPositiveButton("Yes", (dialog, id) -> {
+                    SharedPreferences gymlogPrefs = getSharedPreferences("gymlogPrefs", MODE_PRIVATE);
+                    SharedPreferences sharedPrefs = getSharedPreferences("Week Data", MODE_PRIVATE);
+                    SharedPreferences workoutPrefs = getSharedPreferences("workoutPrefs", MODE_PRIVATE);
 
-                        SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
-                        SharedPreferences.Editor sharedPrefsEditor = sharedPrefs.edit();
-                        SharedPreferences.Editor workoutPrefsEditor = workoutPrefs.edit();
+                    SharedPreferences.Editor gymlogPrefsEditor = gymlogPrefs.edit();
+                    SharedPreferences.Editor sharedPrefsEditor = sharedPrefs.edit();
+                    SharedPreferences.Editor workoutPrefsEditor = workoutPrefs.edit();
 
-                        gymlogPrefsEditor.clear();
-                        sharedPrefsEditor.clear();
-                        workoutPrefsEditor.clear();
+                    gymlogPrefsEditor.clear();
+                    sharedPrefsEditor.clear();
+                    workoutPrefsEditor.clear();
 
-                        gymlogPrefsEditor.apply();
-                        sharedPrefsEditor.apply();
-                        workoutPrefsEditor.apply();
+                    gymlogPrefsEditor.apply();
+                    sharedPrefsEditor.apply();
+                    workoutPrefsEditor.apply();
 
-                        TextView tvFitnessIndex = findViewById(R.id.tvFitnessIndex);
+                    TextView tvFitnessIndex = findViewById(R.id.tvFitnessIndex);
 
-                        updateViews();
-                        tvFitnessIndex.setText("Performance under current plan: " + 0);
-                    }
+                    updateViews();
+                    tvFitnessIndex.setText("Performance under current plan: " + 0);
                 })
-                .setNegativeButton("No",null)
+                .setNegativeButton("No", null)
                 .show();
-    }
-
-    public int getFitnessIndex() {
-        return fitnessIndex;
-    }
-
-    public void setFitnessIndex(int newFitnessIndex) {
-        this.fitnessIndex = newFitnessIndex;
     }
 }

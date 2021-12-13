@@ -7,6 +7,9 @@
     android:background="#D6D7D7"
     tools:context=".NameWeek">
 
+    <!--Author
+    Tino Behnen-->
+
     <!--
         Title for activity
     -->
@@ -53,7 +56,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textPersonName"
             android:maxLength="16"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>

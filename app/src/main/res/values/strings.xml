@@ -25,4 +25,6 @@
     <string name="hours_slept">Hours slept last night</string>
     <string name="minus_sleep">-</string>
     <string name="plus_sleep">+</string>
+    <string name="current_program">Current Program:</string>
+    <string name="total_points_earned">Total points earned:</string>
 </resources>
