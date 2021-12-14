@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d6d7d7"
+    tools:context=".WeightActivity">
+
+    <!--Author
+    Matias Nappa-->
+
+    <!--
+    Edittext for weight input.
+    -->
+
+    <EditText
+        android:id="@+id/weightInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/weight_this_morning"
+        android:inputType="number"
+        android:textSize="20sp"
+        android:maxLength="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_SaveWeight"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextFields" />
+
+    <!--
+    Button for saving weight data
+    -->
+
+    <Button
+        android:id="@+id/btn_SaveWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="saveWeight"
+        android:text="@string/save_weight"
+        android:clickable="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/weightInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/weightInput" />
+
+    <!--
+    Textview that shows previous weight.
+    -->
+
+    <TextView
+        android:id="@+id/tvPreviousWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="64dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/weightInput"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--
+   Switch for toggling between wanting to lose or gain weight.
+   -->
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/toggleLossGain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="3dp"
+        android:text="@string/gain_lose_weight"
+        app:layout_constraintEnd_toStartOf="@+id/btn_SaveWeight"
+        app:layout_constraintTop_toBottomOf="@+id/btn_SaveWeight"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <!--
+    Button that deletes all weight data from sharedpreferences.
+    -->
+
+    <Button
+        android:id="@+id/deleteWeightButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:onClick="deleteWeight"
+        android:text="@string/deleteWeightButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleLossGain" />
+</androidx.constraintlayout.widget.ConstraintLayout>

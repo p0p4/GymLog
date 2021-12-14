@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d6d7d7"
+    tools:context=".SleepActivity">
+
+    <!--Author
+    Matias Nappa-->
+
+    <!--
+    Button for saving sleep data
+    -->
+
+    <Button
+        android:id="@+id/btn_SaveSleep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="saveSleep"
+        android:text="@string/save_weight"
+        android:clickable="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sleepInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sleepInput" />
+
+    <!--
+    Edittext for sleep hours input.
+    -->
+
+    <EditText
+        android:id="@+id/sleepInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="69dp"
+        android:ems="10"
+        android:hint="@string/hours_slept"
+        android:inputType="number"
+        android:maxLength="4"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSleepTarget"
+        app:layout_constraintEnd_toStartOf="@+id/btn_SaveSleep"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--
+    Textview that shows sleep duration target.
+    -->
+
+    <TextView
+        android:id="@+id/tvSleepTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnIncrementTarget"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--
+    Textview that shows how how much more/less user has slept compared to sleep target.
+    -->
+
+    <TextView
+        android:id="@+id/tvSleepPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="64dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/sleepInput"
+        app:layout_constraintEnd_toEndOf="@+id/sleepInput" />
+
+    <!--
+    Button that decreases sleep target by 1h.
+    -->
+
+    <Button
+        android:id="@+id/btnDecreaseTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="187dp"
+        android:text="@string/minus_sleep"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnIncrementTarget"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--
+    Button that increases sleep target by 1h.
+    -->
+
+    <Button
+        android:id="@+id/btnIncrementTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plus_sleep"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnDecreaseTarget"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDecreaseTarget" />
+
+    <!--
+    Button that deletes all sleep data from sharedpreferences.
+    -->
+
+    <Button
+        android:id="@+id/deleteSleepButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:onClick="deleteSleep"
+        android:text="@string/deleteSleepButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDecreaseTarget" />
+</androidx.constraintlayout.widget.ConstraintLayout>

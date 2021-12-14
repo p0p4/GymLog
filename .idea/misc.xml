@@ -3,9 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Matias/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Matias/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_sleep.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Matias/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_weight.xml" value="0.33" />
+        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_name_week.xml" value="0.1" />
+        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_plan_week.xml" value="0.1" />
+        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_sleep.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_start_workout.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/matia/AndroidStudioProjects/project_420/app/src/main/res/layout/activity_weight.xml" value="0.11764705882352941" />
+        <entry key="app/src/main/res/drawable/lol.xml" value="0.1234375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_name_week.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_plan_week.xml" value="0.11594202898550725" />
+        <entry key="app/src/main/res/layout/activity_progression_graph.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_weight.xml" value="0.15881147540983606" />
       </map>
     </option>
+  </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/javaDOC" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
