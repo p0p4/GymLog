@@ -19,7 +19,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * @author matiasnäppä
+ * Class for the sleep activity.
+ * @author matiasnappa
  * versio 1.2
  */
 public class SleepActivity extends AppCompatActivity {
@@ -29,6 +30,10 @@ public class SleepActivity extends AppCompatActivity {
     private static final String sleepPointsPref = "sleepPointsPref", sleepTargetPref = "sleepTargetPref";
     private ArrayList<Float> sleepList;
 
+    /**
+     * Initializes variables from sharedPreferences & sets validations for user input.
+     * Initializes UI buttons and textviews.
+     */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +98,11 @@ public class SleepActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Calculates a user performance score & saves it to sharedPreferences.
+     * Returns to the {@link MainActivity}.
+     * @param view Executes when the "save" button in the activity is pressed.
+     */
     public void saveSleep(View view) {
         EditText sleepInput = findViewById(R.id.sleepInput);
 
@@ -126,6 +136,9 @@ public class SleepActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Increments the user target value.
+     */
     @SuppressLint("SetTextI18n")
     public void incrementTarget() {
         sleepTarget = getSleepTarget() + 1;
@@ -133,6 +146,9 @@ public class SleepActivity extends AppCompatActivity {
                 .setText("Your sleep target is " + sleepTarget + " hours.");
     }
 
+    /**
+     * Decrements the user target value.
+     */
     @SuppressLint("SetTextI18n")
     public void decreaseTarget() {
         sleepTarget = getSleepTarget() - 1;
@@ -141,6 +157,7 @@ public class SleepActivity extends AppCompatActivity {
     }
 
     /**
+     * Deletes saved sleep data.
      * Ask user if they are sure they want to delete all data.
      * if yes: Deletes all sleep data from sharedpreferences.
      * Refreshes the textviews.
@@ -176,6 +193,10 @@ public class SleepActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Getter for sleep target.
+     * @return The target for sleep.
+     */
     public float getSleepTarget() {
         return sleepTarget;
     }

@@ -13,7 +13,7 @@ import android.widget.Toast;
 import java.util.Objects;
 
 /**
- * Activity class for naming the week plan
+ * Class for the week plan naming activity.
  * @author Tino Behnen
  * @version 1.3
  */
@@ -21,25 +21,33 @@ public class NameWeek extends AppCompatActivity
 {
     private static final String TAG = "NameWeek";
 
+    /**
+     * Sets an app logo for the activity actionbar.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_week);
 
-        Log.d(TAG, "onCreate() — called");
+        Log.d(TAG, "onCreate() - called");
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.app_logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 
-    public void continueButton (View view)
+    /**
+     * Saves the name of the week plan if provided by the user.
+     * Changes the activity in focus to plan_week.
+     * Gives a warning and nothing else if the user input is empty.
+     * @param view Executes when the "continue" button in the activity is pressed.
+     */
+    public void continueButton(View view)
     {
-        String name = ((EditText)findViewById(R.id.nameWeekInput)).getText().toString();
+        String name = ((EditText) findViewById(R.id.nameWeekInput)).getText().toString();
 
-        if (!name.equals(""))
-        {
+        if (!name.equals("")) {
             SharedPreferences sharedPrefs = getSharedPreferences("Week Data", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPrefs.edit();
             editor.putString("name", name);
@@ -47,9 +55,7 @@ public class NameWeek extends AppCompatActivity
 
             Intent planWeekIntent = new Intent(this, PlanWeek.class);
             startActivity(planWeekIntent);
-        }
-        else
-        {
+        } else {
             Toast.makeText(this, "Fill in required* fields!", Toast.LENGTH_LONG).show();
         }
     }

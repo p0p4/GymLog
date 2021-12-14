@@ -160,8 +160,6 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:maxLength="2"
-            android:digits="123456789"
-            android:singleLine = "true"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -181,7 +179,6 @@
         app:counterEnabled="true"
         app:counterMaxLength="2"
         app:helperText="required*"
-        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setsInputLayout"

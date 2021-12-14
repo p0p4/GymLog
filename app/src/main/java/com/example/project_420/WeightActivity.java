@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * @author matiasnäppä
+ * Class for the weight activity.
+ * @author matiasnappa
  * versio 1.2
  */
 public class WeightActivity extends AppCompatActivity {
@@ -31,6 +32,10 @@ public class WeightActivity extends AppCompatActivity {
     private ArrayList<Float> weightList;
     private SwitchCompat toggleLossGain;
 
+    /**
+     * Initializes variables from sharedPreferences & sets validations for user input.
+     * Initializes UI buttons and textviews.
+     */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,11 @@ public class WeightActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Calculates a user performance score & saves it to sharedPreferences.
+     * Returns to the {@link MainActivity}.
+     * @param view Executes when the "save" button in the activity is pressed.
+     */
     public void saveWeight(View view) {
         EditText weightInput = findViewById(R.id.weightInput);
 
@@ -124,6 +134,7 @@ public class WeightActivity extends AppCompatActivity {
     }
 
     /**
+     * Deletes saved weight data.
      * Ask user if they are sure they want to delete all data.
      * if yes: Deletes all weight data from sharedpreferences.
      * Refreshes the textviews.
@@ -156,10 +167,18 @@ public class WeightActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Getter for weight
+     * @return Gets the current weight.
+     */
     public float getWeight() {
         return weight;
     }
 
+    /**
+     * Setter for weight
+     * @param weight Sets the current weight.
+     */
     public void setWeight(float weight) {
         this.weight = weight;
     }
