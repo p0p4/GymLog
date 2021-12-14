@@ -10,7 +10,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
- * Singleton class that
+ * Singleton class that handles the data for the week program.
  * @author Tino Behnen
  * @version 1.5
  */

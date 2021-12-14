@@ -121,8 +121,8 @@ public class ProgressionGraphActivity extends AppCompatActivity {
 
     /**
      * Runs updateUI method when a radiobutton is pressed
+     * @param view Executes when a button in the activity is pressed.
      */
-
         public void buttonPressed(View view) {
         updateUI();
         }

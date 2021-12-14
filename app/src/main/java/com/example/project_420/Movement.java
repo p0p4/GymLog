@@ -11,7 +11,7 @@ enum Day
 }
 
 /**
- * Encapsulates instructions for an exercise movement.
+ * Object that encapsulates instructions for an exercise movement.
  * @author Tino Behnen
  * @version 1.2
  */

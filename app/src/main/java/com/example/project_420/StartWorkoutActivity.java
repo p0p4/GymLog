@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -108,8 +106,8 @@ public class StartWorkoutActivity extends AppCompatActivity {
      * Calculates new workoutscore and saves it to sharedpreferences. (gymlogPrefs)
      * Gets all previous workoutscores from sharedpreferences and adds them to an arraylist. (workoutPrefs)
      * Saves previously made arraylist to sharedpreferences. (workoutPrefs)
+     * @param view Executes when the "done" button in the activity is pressed.
      */
-
     public void doneButton (View view) {
         gymlogPrefs = getSharedPreferences("gymlogPrefs", Context.MODE_PRIVATE);
         workoutScore = gymlogPrefs.getInt("workoutScore",0);

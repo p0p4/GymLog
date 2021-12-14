@@ -12,10 +12,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
+/**
+ * Main and starting activity for the app.
+ * @author matiasnappa
+ */
 public class MainActivity extends AppCompatActivity {
 
     private int fitnessIndex;
 
+    /**
+     * Sets an app logo for the activity actionbar.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,31 +35,54 @@ public class MainActivity extends AppCompatActivity {
         updateViews();
     }
 
+    /**
+     * Moves to the {@link StartWorkoutActivity} activity.
+     * @param view Executes when the "start workout" button in the activity is pressed.
+     */
     public void startButton(View view) {
         Intent intent = new Intent(this, StartWorkoutActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Moves to the {@link ProgressionGraphActivity} activity.
+     * @param view Executes when the "progress" button in the activity is pressed.
+     */
     public void progressButton(View view) {
         Intent progressIntent = new Intent(this, ProgressionGraphActivity.class);
         startActivity(progressIntent);
     }
 
+    /**
+     * Moves to the {@link NameWeek} activity.
+     * @param view Executes when the "week planning" button in the activity is pressed.
+     */
     public void nameWeekButton(View view) {
         Intent nameWeekIntent = new Intent(this, NameWeek.class);
         startActivity(nameWeekIntent);
     }
 
+    /**
+     * Moves to the {@link SleepActivity} activity.
+     * @param view Executes when the "sleep" button in the activity is pressed.
+     */
     public void sleepButton(View view) {
         Intent sleepIntent = new Intent(this, SleepActivity.class);
         startActivity(sleepIntent);
     }
 
+    /**
+     * Moves to the {@link WeightActivity} activity.
+     * @param view Executes when the "weight" button in the activity is pressed.
+     */
     public void weightButton(View view) {
         Intent weightIntent = new Intent(this, WeightActivity.class);
         startActivity(weightIntent);
     }
 
+    /**
+     * Calculates and refreshes the user performance score.
+     */
     @SuppressLint("SetTextI18n")
     public void updateViews() {
         String programStringDefault = "You don't currently have a workout plan.";
@@ -79,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
      * if yes: Deletes all workout data from sharedpreferences.
      * Refreshes the textviews.
      * if no: nothing happens.
+     * @param view Executes when the "clear" button in the activity is pressed.
      */
-
     @SuppressLint("SetTextI18n")
     public void clearProgram(View view) {
         new AlertDialog.Builder(this)

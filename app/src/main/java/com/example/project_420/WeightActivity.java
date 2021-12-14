@@ -22,7 +22,7 @@ import java.util.Objects;
 /**
  * Class for the weight activity.
  * @author matiasnappa
- * versio 1.2
+ * @version 1.2
  */
 public class WeightActivity extends AppCompatActivity {
 
@@ -33,7 +33,7 @@ public class WeightActivity extends AppCompatActivity {
     private SwitchCompat toggleLossGain;
 
     /**
-     * Initializes variables from sharedPreferences & sets validations for user input.
+     * Initializes variables from sharedPreferences and sets validations for user input.
      * Initializes UI buttons and textviews.
      */
     @SuppressLint("SetTextI18n")
@@ -85,7 +85,7 @@ public class WeightActivity extends AppCompatActivity {
     }
 
     /**
-     * Calculates a user performance score & saves it to sharedPreferences.
+     * Calculates a user performance score and saves it to sharedPreferences.
      * Returns to the {@link MainActivity}.
      * @param view Executes when the "save" button in the activity is pressed.
      */
@@ -139,6 +139,7 @@ public class WeightActivity extends AppCompatActivity {
      * if yes: Deletes all weight data from sharedpreferences.
      * Refreshes the textviews.
      * if no: nothing happens.
+     * @param view  when the "delete" button in the activity is pressed.
      */
     @SuppressLint("SetTextI18n")
     public void deleteWeight(View view) {

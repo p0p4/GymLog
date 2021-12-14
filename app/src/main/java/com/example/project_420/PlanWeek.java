@@ -66,7 +66,7 @@ public class PlanWeek extends AppCompatActivity
     }
 
     /**
-     * Exits week planning & saves the user defined movement.
+     * Exits week planning and saves the user defined movement.
      * @param view Executes when the "end week" button in the activity is pressed.
      */
     public void endWeek(View view)
@@ -76,7 +76,7 @@ public class PlanWeek extends AppCompatActivity
     }
 
     /**
-     * Moves to the next day & saves the user defined movement.
+     * Moves to the next day and saves the user defined movement.
      * Resets movement creation counter.
      * Return back to the main activity if the activity is on sunday.
      * @param view Executes when the "end day" button in the activity is pressed.
